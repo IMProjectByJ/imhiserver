@@ -2,6 +2,7 @@ package com.jit.imhi.api;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jit.imhi.model.User;
+import com.jit.imhi.service.AuthenticationService;
 import com.jit.imhi.service.UserService;
 import com.jit.imhi.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,31 +12,43 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/user")
 public class UserApi {
     private UserService userService;
+    private AuthenticationService authenticationService;
     @Autowired
 
-    public UserApi(UserService userService) {
+    public UserApi(UserService userService, AuthenticationService authenticationService) {
         this.userService = userService;
+        this.authenticationService = authenticationService;
     }
 // 通过手机号登录
+     /*
+     添加token方式， create by liuyunxing
+
+
+    */
     @GetMapping("{phoneName}/{password}")
     public Object handleLogin(@PathVariable String phoneName, @PathVariable String password)
     {
         JSONObject jsonObject = new JSONObject();
-        User user = userService.findUserByPhoneNum(phoneName); //两次加密
+        User user = userService.findUserByPhoneNum(phoneName); //所获得的结果是经过两次加密的
         if (user == null)
         {
             jsonObject.put("err","用户不存在");
             return jsonObject;// 用户名不存在，返回null
         }
 
-         if (user.getUserPassword().equals(MD5Util.encrypt(password))) {
-             return user;
+         if (!userService.comparePassword(password, user.getUserPassword())) {
+             jsonObject.put("err","密码错误");
+             return jsonObject;
          }// 密码输入正确，返回User对象,/*??  是否要同时将离线信息穿回？*/
-         jsonObject.put("err","密码错误");
 
-        return jsonObject;
+        String token  = authenticationService.getToken(user); // 获得token
+        user.setUserPassword(token); // 将用户token包含在用户密码字段中
+        return user;
 
     }
+    /*
+      通过账号登录
+     */
 
     @GetMapping("id/{userId}/{password}")
     public Object handleIdLogin(@PathVariable Integer userId, @PathVariable String password)
@@ -47,12 +60,15 @@ public class UserApi {
             jsonObject.put("err","用户不存在");
             return jsonObject;// 用户名不存在，返回null
         }
-        if (user.getUserPassword().equals(MD5Util.encrypt(password)))
-        {
-            return user;
-        }
-        jsonObject.put("err","密码错误");
-        return  jsonObject;
+        if (!userService.comparePassword(password, user.getUserPassword())) {
+            jsonObject.put("err","密码错误");
+            return jsonObject;
+        }// 密码输入正确，返回User对象,/*??  是否要同时将离线信息穿回？*/
+
+        String token  = authenticationService.getToken(user); // 获得token
+        user.setUserPassword(token); // 将用户token包含在用户密码字段中
+        return user;
+
     }
 // 注册
     @PostMapping("register")
