@@ -19,6 +19,23 @@ public class UserApi {
         this.userService = userService;
         this.authenticationService = authenticationService;
     }
+
+    //响应详细信息
+    @GetMapping("details/{userId}")
+    public Object handleDetails(@PathVariable Integer userId){
+        JSONObject jsonObject = new JSONObject();
+        User user = userService.findUserByUserId(userId);
+        if (user == null)
+        {
+            jsonObject.put("err", "用户不存在");
+            System.out.println("err");
+            return jsonObject;
+        }
+        jsonObject.put("details", user);
+        return jsonObject;
+
+    }
+
 // 通过手机号登录
      /*
      添加token方式， create by liuyunxing
