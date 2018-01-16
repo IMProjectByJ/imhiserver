@@ -55,6 +55,18 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 		</dependency>
+		<!--那要怎么自定义服务器出错时返回的 json 格式和将错误信息记录到 log 文件呢-->
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+		</dependency>
+		<!--jwt 的 java 实现由很多，经过对比，选择了下面这个。 在 pom.xml 中添加-->
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>3.0.2</version>
+		</dependency>
 
 
 	</dependencies>
