@@ -122,7 +122,7 @@
                 3，XMLMAPPER：会生成Mapper接口，接口完全依赖XML；
             注意，如果context是MyBatis3Simple：只支持ANNOTATEDMAPPER和XMLMAPPER
         -->
-        <javaClientGenerator targetPackage="com.jit.imhi.mapper" type="ANNOTATEDMAPPER" targetProject="src/main/java">
+        <javaClientGenerator targetPackage="com.jit.imhi.mapper" type="XMLMAPPER" targetProject="src/main/java">
             <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
             <property name="enableSubPackages" value="true"/>
 
@@ -169,7 +169,7 @@
 
             注意，table里面很多参数都是对javaModelGenerator，context等元素的默认属性的一个复写；
          -->
-        <table tableName="user" >
+        <table tableName="" >
 
             <!-- 参考 javaModelGenerator 的 constructorBased属性-->
             <property name="constructorBased" value="false"/>
