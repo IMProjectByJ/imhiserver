@@ -87,13 +87,8 @@ public class FileOperateApi {
                 System.out.println("获得了文件地址为----" + filePath);
                 if (filePath != null) {
                     File file = fileOperateService.downloadFileFromNative(filePath);
-                    System.out.println(file.getParent());
-                    System.out.println(file.length());
 
-                    if (file != null)
-                    {
-                        System.out.println(file.getParent());
-                        System.out.println(file.length());
+                    if (file != null) {
                         System.out.println(jsonObject.getString("fileName"));
                         try {
                             return ResponseEntity

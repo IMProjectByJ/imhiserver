@@ -1,6 +1,7 @@
 package com.jit.imhi.mapper;
 
 import com.jit.imhi.model.Logininfo;
+
 import java.util.List;
 
 public interface LogininfoMapper {

@@ -48,7 +48,6 @@ public class Logininfo {
      * This method returns the value of the database column LoginInfo.login_id
      *
      * @return the value of LoginInfo.login_id
-     *
      * @mbggenerated Fri Jan 12 21:12:57 CST 2018
      */
     public Integer getLoginId() {
@@ -60,7 +59,6 @@ public class Logininfo {
      * This method sets the value of the database column LoginInfo.login_id
      *
      * @param loginId the value for LoginInfo.login_id
-     *
      * @mbggenerated Fri Jan 12 21:12:57 CST 2018
      */
     public void setLoginId(Integer loginId) {
@@ -72,7 +70,6 @@ public class Logininfo {
      * This method returns the value of the database column LoginInfo.user_id
      *
      * @return the value of LoginInfo.user_id
-     *
      * @mbggenerated Fri Jan 12 21:12:57 CST 2018
      */
     public Integer getUserId() {
@@ -84,7 +81,6 @@ public class Logininfo {
      * This method sets the value of the database column LoginInfo.user_id
      *
      * @param userId the value for LoginInfo.user_id
-     *
      * @mbggenerated Fri Jan 12 21:12:57 CST 2018
      */
     public void setUserId(Integer userId) {
@@ -96,7 +92,6 @@ public class Logininfo {
      * This method returns the value of the database column LoginInfo.ip_addr
      *
      * @return the value of LoginInfo.ip_addr
-     *
      * @mbggenerated Fri Jan 12 21:12:57 CST 2018
      */
     public String getIpAddr() {
@@ -108,7 +103,6 @@ public class Logininfo {
      * This method sets the value of the database column LoginInfo.ip_addr
      *
      * @param ipAddr the value for LoginInfo.ip_addr
-     *
      * @mbggenerated Fri Jan 12 21:12:57 CST 2018
      */
     public void setIpAddr(String ipAddr) {
@@ -120,7 +114,6 @@ public class Logininfo {
      * This method returns the value of the database column LoginInfo.ip_port
      *
      * @return the value of LoginInfo.ip_port
-     *
      * @mbggenerated Fri Jan 12 21:12:57 CST 2018
      */
     public String getIpPort() {
@@ -132,7 +125,6 @@ public class Logininfo {
      * This method sets the value of the database column LoginInfo.ip_port
      *
      * @param ipPort the value for LoginInfo.ip_port
-     *
      * @mbggenerated Fri Jan 12 21:12:57 CST 2018
      */
     public void setIpPort(String ipPort) {
@@ -144,7 +136,6 @@ public class Logininfo {
      * This method returns the value of the database column LoginInfo.login_date
      *
      * @return the value of LoginInfo.login_date
-     *
      * @mbggenerated Fri Jan 12 21:12:57 CST 2018
      */
     public Date getLoginDate() {
@@ -156,7 +147,6 @@ public class Logininfo {
      * This method sets the value of the database column LoginInfo.login_date
      *
      * @param loginDate the value for LoginInfo.login_date
-     *
      * @mbggenerated Fri Jan 12 21:12:57 CST 2018
      */
     public void setLoginDate(Date loginDate) {

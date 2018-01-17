@@ -27,7 +27,7 @@ public class FileOperateService {
     FileOperateService(HistoryMessageMapper historyMessageMapper){
         this.historyMessageMapper = historyMessageMapper;
         //ROOTPath = getClass().getResource("/").getFile().toString();// 获得本地地址
-        ROOTPath = "/home/star/testFile/";
+        ROOTPath = "/home/star/testFile/IMHI";
     }
     // 文件消息类型为3
     public  int  insertFileToHistoryMessage(HistoryMessage historyMessage){
@@ -59,8 +59,10 @@ public class FileOperateService {
         System.out.println(getClass().getResource("/").getFile().toString());
         // ---------- for test above
         String fileName = file.getOriginalFilename();// 获得上传文件的名称
+        String nameWithoutSuffix = fileName.substring(fileName.lastIndexOf("."));
+        String suffix = fileName.replaceAll(nameWithoutSuffix,"");
         System.out.println("上传文件名称为"+fileName);
-        File  saveFile = new File(ROOTPath+Path+fileName+new Date().getTime());//将文件加上时间戳
+        File  saveFile = new File(ROOTPath+Path+nameWithoutSuffix+new Date().getTime()+suffix);//将文件加上时间戳
 
         if (!saveFile.getParentFile().exists())
                 saveFile.getParentFile().mkdirs(); // 存储到指定路径

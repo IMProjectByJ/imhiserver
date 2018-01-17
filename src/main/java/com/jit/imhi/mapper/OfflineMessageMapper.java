@@ -1,7 +1,9 @@
 package com.jit.imhi.mapper;
 
 import com.jit.imhi.model.OfflineMessage;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface OfflineMessageMapper {
@@ -46,5 +48,5 @@ public interface OfflineMessageMapper {
     int updateByPrimaryKey(OfflineMessage record);
 
     //yuyisummer 1.14
-    int selectById(@Param("toId") Integer toId, @Param("fromUserId") Integer fromUserId,@Param("messageType") String messageType);
+    int selectById(@Param("toId") Integer toId, @Param("fromUserId") Integer fromUserId, @Param("messageType") String messageType);
 }

@@ -1,4 +1,5 @@
 package com.mina.socket.typeaction;
+
 import com.jit.imhi.api.LogininfoApi;
 import com.jit.imhi.mapper.LogininfoMapper;
 import com.jit.imhi.mapper.OfflineMessageMapper;
@@ -16,44 +17,50 @@ import java.util.Map;
 
 
 public class Type_Six {
-    private  IoSession ioSession;
-    public Type_Six(){};
-    public Type_Six(IoSession ioSession){
+    private IoSession ioSession;
+
+    public Type_Six() {
+    }
+
+    ;
+
+    public Type_Six(IoSession ioSession) {
         this.ioSession = ioSession;
     }
 
-    static   SqlSessionFactory sqlSessionFactory = null;
-   static {
-       sqlSessionFactory = MyBatisUtil.getSqlSessionFactory();
-   }
+    static SqlSessionFactory sqlSessionFactory = null;
+
+    static {
+        sqlSessionFactory = MyBatisUtil.getSqlSessionFactory();
+    }
 
 
     public void inorup(Logininfo logininfo) {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         LogininfoMapper logininfoMapper = sqlSession.getMapper(LogininfoMapper.class);
-       try {
-           if(logininfoMapper.selectByPrimaryKey(logininfo.getUserId())!= null ) {
+        try {
+            if (logininfoMapper.selectByPrimaryKey(logininfo.getUserId()) != null) {
                 System.out.println("搜索不为空");
-               logininfoMapper.updateByPrimaryKey(logininfo);
-           }
-               else {
-               System.out.println("搜索为空");
-               logininfoMapper.insert(logininfo);
-           }
-           sqlSession.commit();
-       } catch (Exception e){
-           e.printStackTrace();
-       }
+                logininfoMapper.updateByPrimaryKey(logininfo);
+            } else {
+                System.out.println("搜索为空");
+                logininfoMapper.insert(logininfo);
+            }
+            sqlSession.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         sqlSession.close();
 
     }
-        public int SelectOffline(int fromid,int toid){
-            int num = 0;
-            SqlSession sqlSession = sqlSessionFactory.openSession();
-            OfflineMessageMapper offlineMessageMapper = sqlSession.getMapper(OfflineMessageMapper.class);
-            num = offlineMessageMapper.selectById(fromid,toid,"2");
-            System.out.println("num = "+num+"fromid = "+fromid +"toid = "+toid);
-            sqlSession.close();
-            return num;
-        }
+
+    public int SelectOffline(int fromid, int toid) {
+        int num = 0;
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        OfflineMessageMapper offlineMessageMapper = sqlSession.getMapper(OfflineMessageMapper.class);
+        num = offlineMessageMapper.selectById(fromid, toid, "2");
+        System.out.println("num = " + num + "fromid = " + fromid + "toid = " + toid);
+        sqlSession.close();
+        return num;
+    }
 }

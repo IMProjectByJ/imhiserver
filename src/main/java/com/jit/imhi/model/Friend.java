@@ -32,7 +32,6 @@ public class Friend {
      * This method returns the value of the database column Friend.user_id
      *
      * @return the value of Friend.user_id
-     *
      * @mbggenerated Sat Jan 13 10:14:02 CST 2018
      */
     public Integer getUserId() {
@@ -44,7 +43,6 @@ public class Friend {
      * This method sets the value of the database column Friend.user_id
      *
      * @param userId the value for Friend.user_id
-     *
      * @mbggenerated Sat Jan 13 10:14:02 CST 2018
      */
     public void setUserId(Integer userId) {
@@ -56,7 +54,6 @@ public class Friend {
      * This method returns the value of the database column Friend.friend_id
      *
      * @return the value of Friend.friend_id
-     *
      * @mbggenerated Sat Jan 13 10:14:02 CST 2018
      */
     public Integer getFriendId() {
@@ -68,7 +65,6 @@ public class Friend {
      * This method sets the value of the database column Friend.friend_id
      *
      * @param friendId the value for Friend.friend_id
-     *
      * @mbggenerated Sat Jan 13 10:14:02 CST 2018
      */
     public void setFriendId(Integer friendId) {
@@ -80,7 +76,6 @@ public class Friend {
      * This method returns the value of the database column Friend.add_date
      *
      * @return the value of Friend.add_date
-     *
      * @mbggenerated Sat Jan 13 10:14:02 CST 2018
      */
     public Date getAddDate() {
@@ -92,7 +87,6 @@ public class Friend {
      * This method sets the value of the database column Friend.add_date
      *
      * @param addDate the value for Friend.add_date
-     *
      * @mbggenerated Sat Jan 13 10:14:02 CST 2018
      */
     public void setAddDate(Date addDate) {

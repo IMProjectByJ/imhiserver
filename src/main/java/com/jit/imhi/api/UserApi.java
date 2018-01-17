@@ -57,19 +57,18 @@ public class UserApi {
         JSONObject jsonObject = new JSONObject();
         User user = userService.findUserByPhoneNum(phoneName); //两次加密
 
-        if (user == null)
-        {
+        if (user == null) {
             jsonObject.put("err","用户不存在");
             System.out.println("用户不存在");
             return jsonObject;// 用户名不存在，返回null
         }
 
-         if (!userService.comparePassword(password, user.getUserPassword())) {
-             jsonObject.put("err","密码错误");
-             System.out.println("密码错误");
-             return jsonObject;
+        if (!userService.comparePassword(password, user.getUserPassword())) {
+            jsonObject.put("err","密码错误");
+            System.out.println("密码错误");
+            return jsonObject;
 
-         }// 密码输入正确，返回User对象,/*??  是否要同时将离线信息穿回？*/
+        }// 密码输入正确，返回User对象,/*??  是否要同时将离线信息穿回？*/
 
         String token  = authenticationService.getToken(user); // 获得token
         user.setUserPassword(token); // 将用户token包含在用户密码字段中

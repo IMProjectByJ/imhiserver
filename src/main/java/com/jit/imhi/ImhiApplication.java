@@ -11,6 +11,6 @@ public class ImhiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ImhiApplication.class, args);
-		MinaService.start();
+        MinaService.start();
 	}
 }

@@ -6,24 +6,25 @@
 <configuration>
     <settings>
         <!-- changes from the defaults for testing -->
-        <setting name="cacheEnabled" value="false" />
-        <setting name="useGeneratedKeys" value="true" />
-        <setting name="defaultExecutorType" value="REUSE" />
+        <setting name="cacheEnabled" value="false"/>
+        <setting name="useGeneratedKeys" value="true"/>
+        <setting name="defaultExecutorType" value="REUSE"/>
     </settings>
     <environments default="development">
         <environment id="development">
             <transactionManager type="jdbc"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://120.77.155.191:3306/imHi?useUnicode=true&amp;characterEncoding=utf8"/>
+                <property name="url"
+                          value="jdbc:mysql://120.77.155.191:3306/imHi?useUnicode=true&amp;characterEncoding=utf8"/>
                 <property name="username" value="imdb"/>
                 <property name="password" value="imdb"/>
             </dataSource>
         </environment>
     </environments>
     <mappers>
-        <mapper resource="com/jit/imhi/mapper/LogininfoMapper.xml" />
-        <mapper resource="com/jit/imhi/mapper/FriendMapper.xml" />
-        <mapper resource="com/jit/imhi/mapper/OfflineMessageMapper.xml" />
+        <mapper resource="com/jit/imhi/mapper/LogininfoMapper.xml"/>
+        <mapper resource="com/jit/imhi/mapper/FriendMapper.xml"/>
+        <mapper resource="com/jit/imhi/mapper/OfflineMessageMapper.xml"/>
     </mappers>
 </configuration>

@@ -12,14 +12,17 @@ import java.util.List;
 
 public class FriendsOnline {
     private IoSession ioSession;
-    public FriendsOnline(IoSession ioSession){
+
+    public FriendsOnline(IoSession ioSession) {
         this.ioSession = ioSession;
     }
 
     static SqlSessionFactory sqlSessionFactory = null;
+
     static {
         sqlSessionFactory = MyBatisUtil.getSqlSessionFactory();
     }
+
     public List<Friend> FriendIsOnline(int userId) {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         FriendMapper friendMapper = sqlSession.getMapper(FriendMapper.class);
