@@ -1,22 +1,29 @@
 package com.jit.imhi.api;
 
 import com.alibaba.fastjson.JSONObject;
+import com.jit.imhi.model.Friend;
 import com.jit.imhi.model.User;
 import com.jit.imhi.service.AuthenticationService;
+import com.jit.imhi.service.FriendService;
 import com.jit.imhi.service.UserService;
 import com.jit.imhi.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/user")
 public class UserApi {
     private UserService userService;
+    private FriendService friendService;
     private AuthenticationService authenticationService;
     @Autowired
 
-    public UserApi(UserService userService, AuthenticationService authenticationService) {
+    public UserApi(UserService userService, AuthenticationService authenticationService, FriendService friendService) {
         this.userService = userService;
+        this.friendService = friendService;
         this.authenticationService = authenticationService;
     }
 
@@ -31,6 +38,7 @@ public class UserApi {
             System.out.println("err");
             return jsonObject;
         }
+        user.setUserPassword("");
         jsonObject.put("details", user);
         return jsonObject;
 
@@ -42,12 +50,13 @@ public class UserApi {
 
 
     */
+
+    // 通过手机号登录xd
     @GetMapping("{phoneName}/{password}")
-    public Object handleLogin(@PathVariable String phoneName, @PathVariable String password)
-    {
-        System.out.println("user:" + phoneName);
+    public Object handleLogin(@PathVariable String phoneName, @PathVariable String password) {
         JSONObject jsonObject = new JSONObject();
-        User user = userService.findUserByPhoneNum(phoneName); //所获得的结果是经过两次加密的
+        User user = userService.findUserByPhoneNum(phoneName); //两次加密
+
         if (user == null)
         {
             jsonObject.put("err","用户不存在");
@@ -118,4 +127,56 @@ public class UserApi {
         return user;
     }
 
+    //响应搜索好友
+    @GetMapping("add_search_by_number/{phoneNum}")
+    public Object handlePhoneNumber(@PathVariable String phoneNum) {
+        JSONObject jsonObject = new JSONObject();
+        User user = userService.findUserByPhoneNum(phoneNum);
+        System.out.println(user.getNikname());
+        if (user == null) {
+            jsonObject.put("err", "phone用户不存在");
+            System.out.println("err");
+            return jsonObject;
+        }
+        user.setUserPassword("");
+        jsonObject.put("add_search", user);
+        return jsonObject;
+    }
+
+    @GetMapping("add_search_by_uid/{userId}")
+    public Object handleUerId(@PathVariable Integer userId) {
+        JSONObject jsonObject = new JSONObject();
+        User user = userService.findUserByUserId(userId);
+        if (user == null) {
+            jsonObject.put("err", "id用户不存在");
+            return jsonObject;
+        }
+        user.setUserPassword("");
+        jsonObject.put("add_search", user);
+        return jsonObject;
+    }
+
+    @GetMapping("find_friend_list/{userId}")
+    public Object findFriendList(@PathVariable Integer userId) {
+
+        System.out.println("\n\n\n测试输出" + userId + "\n\n");
+        List<Friend> list;
+        list = friendService.selectByUserId(userId);
+        System.out.println(list.size() + " 数量");
+        List<User> retval = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+
+            User user = new User();
+            User user1 = userService.findUserByUserId(list.get(i).getFriendId());
+            user.setUserId(user1.getUserId());
+            user.setNikname(user1.getNikname());
+            user.setPhoneNum(user1.getPhoneNum());
+            user.setHeadUrl(user1.getHeadUrl());
+            user.setUserPassword("");
+            retval.add(user);
+        }
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("retval", retval);
+        return jsonObject;
+    }
 }

@@ -26,8 +26,17 @@ public class UserService {
        // System.out.println("in UserSService " + userId);
         return  userMapper.selectByPrimaryKey(userId);
     }
-    public User insertUser(User user)
-    {
+
+    public User findFriendByUserID(Integer userId) {
+        User user = new User();
+        User user1 = userMapper.selectByPrimaryKey(userId);
+        user.setNikname(user1.getNikname());
+        user.setPhoneNum(user1.getPhoneNum());
+        user.setUserId(user1.getUserId());
+        return user;
+    }
+
+    public User insertUser(User user) {
         Integer id;
         if ((id = userMapper.insert(user)) != null)
         {
@@ -44,9 +53,8 @@ public class UserService {
         return null;
     }
 
-    public int updateInfoByUserId(User user)
-    {
-        return userMapper.updateByPrimaryKey(user) ;
+    public int updateInfoByUserId(User user) {
+        return userMapper.updateByPrimaryKey(user);
     }
 
     public boolean comparePassword(String  userPssword, String dateBasePassword)
