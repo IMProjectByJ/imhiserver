@@ -1,6 +1,8 @@
 package com.jit.imhi.mapper;
 
 import com.jit.imhi.model.Logininfo;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 public interface LogininfoMapper {
@@ -43,4 +45,9 @@ public interface LogininfoMapper {
      * @mbggenerated Fri Jan 12 21:12:57 CST 2018
      */
     int updateByPrimaryKey(Logininfo record);
+
+
+    //yuyisummer 1.17 测试从表中取出port+IP 对应的user_id
+    int searchUserId(@Param("ip_addr")String  ip_addr,@Param("ip_port") String ip_port);
+
 }

@@ -25,5 +25,6 @@
         <mapper resource="com/jit/imhi/mapper/LogininfoMapper.xml" />
         <mapper resource="com/jit/imhi/mapper/FriendMapper.xml" />
         <mapper resource="com/jit/imhi/mapper/OfflineMessageMapper.xml" />
+        <mapper resource="com/jit/imhi/mapper/HistoryMessageMapper.xml" />
     </mappers>
 </configuration>

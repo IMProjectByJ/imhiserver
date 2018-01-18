@@ -65,4 +65,12 @@
     select login_id, user_id, ip_addr, ip_port, login_date
     from LoginInfo
   </select>
+
+  <!--yuyisummer 1.17 int searchUserId(int ip_addr,int ip_port);-->
+  <select id="searchUserId"    resultType="INTEGER">
+    select user_id
+    from LoginInfo
+    where  ip_addr = #{ip_addr,jdbcType=VARCHAR}and
+      ip_port = #{ip_port,jdbcType=VARCHAR}
+  </select>
 </mapper>

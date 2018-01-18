@@ -1,18 +1,24 @@
 package com.jit.imhi.api;
 
 import com.alibaba.fastjson.JSONObject;
+import com.google.gson.Gson;
 import com.jit.imhi.mapper.FriendMapper;
 import com.jit.imhi.model.Friend;
 import com.jit.imhi.model.User;
 import com.jit.imhi.service.FriendService;
 import com.jit.imhi.service.UserService;
 import com.jit.imhi.utils.MD5Util;
+import com.mina.socket.MyIoHandler;
 import jdk.nashorn.internal.scripts.JS;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.jdbc.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -133,4 +139,57 @@ public class UserApi {
         jsonObject.put("retval", retval);
         return jsonObject;
     }
+    //响应详细信息
+    @GetMapping("details/{userId}")
+    public Object handleDetails(@PathVariable Integer userId){
+        JSONObject jsonObject = new JSONObject();
+        User user = userService.findUserByUserId(userId);
+
+
+
+       String  str = MyIoHandler.DateToMySQLDateTimeString(user.getBirth());
+
+        System.out.println("cehsi:"+str);
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");//小写的mm表示的是分钟
+        Date date = new Date(str);
+//        try {
+//           date=sdf.parse(str);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+        user.setBirth(date);
+        System.out.println("cehsi:"+user.getBirth());
+        if (user == null)
+        {
+            jsonObject.put("err", "用户不存在");
+            System.out.println("err");
+            return jsonObject;
+        }
+
+        jsonObject.put("details", user);
+        return jsonObject;
+
+    }
+//   System.out.println("响应用户更新个人信息");
+
+    //响应用户更新个人信息
+    @GetMapping("information/{information}")
+    public Object handleInformation(@PathVariable String information){
+        System.out.println("响应用户更新个人信息"+information);
+        User user = new Gson().fromJson(information, User.class);
+        System.out.println("测试");
+        System.out.println(user.toString());
+        JSONObject jsonObject = new JSONObject();
+
+        if (user == null) {
+            jsonObject.put("err", "failed");
+            System.out.println("user is null");
+            return jsonObject;
+        } else {
+            System.out.println("user is yes");
+            jsonObject.put("success", "success");
+            return jsonObject;
+        }
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.mina.socket.typeaction;
 import com.jit.imhi.api.LogininfoApi;
+import com.jit.imhi.mapper.GroupchatMapper;
 import com.jit.imhi.mapper.LogininfoMapper;
 import com.jit.imhi.mapper.OfflineMessageMapper;
 import com.jit.imhi.model.Logininfo;
@@ -55,5 +56,30 @@ public class Type_Six {
             System.out.println("num = "+num+"fromid = "+fromid +"toid = "+toid);
             sqlSession.close();
             return num;
+        }
+        public int SelectOffadd(int fromid,int toid) {
+            int num = 0;
+            SqlSession sqlSession = sqlSessionFactory.openSession();
+            OfflineMessageMapper offlineMessageMapper = sqlSession.getMapper(OfflineMessageMapper.class);
+            GroupchatMapper groupchatMapper = sqlSession.getMapper(GroupchatMapper.class);
+
+
+            //这里还没做完，是做群消息的，暂时看起来没用
+            num += offlineMessageMapper.selectById(fromid,toid,"2");
+            System.out.println("num = "+num+"fromid = "+fromid +"toid = "+toid);
+            sqlSession.close();
+            return num;
+        }
+        public int searchUserId(String  ip_addr,String ip_port){
+            int user_id = 0;
+            SqlSession sqlSession = sqlSessionFactory.openSession();
+            System.out.println(ip_addr+"      "+ip_port);
+           LogininfoMapper logininfoMapper = sqlSession.getMapper(LogininfoMapper.class);
+            System.out.println("测试2");
+           user_id = logininfoMapper.searchUserId(ip_addr,ip_port);
+            System.out.println("测试3");
+            System.out.println("num = "+user_id+"fromid = "+ip_addr +"toid = "+ip_port);
+            sqlSession.close();
+            return user_id;
         }
 }
