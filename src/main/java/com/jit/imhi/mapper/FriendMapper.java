@@ -1,8 +1,9 @@
 package com.jit.imhi.mapper;
 
 import com.jit.imhi.model.Friend;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface FriendMapper {
     /**

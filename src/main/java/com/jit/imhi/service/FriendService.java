@@ -17,10 +17,11 @@ public class FriendService {
     public FriendService(FriendMapper friendMapper) {
         this.friendMapper = friendMapper;
     }
-    public List<Friend> selectByUserId(Integer userId){
-        List<Friend> list ;
+
+    public List<Friend> selectByUserId(Integer userId) {
+        List<Friend> list;
         System.out.println("测试是否使用了selectByUserId");
-        list =  friendMapper.selectByUserId(userId);
-        return  list;
+        list = friendMapper.selectByUserId(userId);
+        return list;
     }
 }

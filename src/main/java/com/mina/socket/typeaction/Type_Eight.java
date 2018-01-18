@@ -13,26 +13,31 @@ import java.util.List;
 
 public class Type_Eight {
     private IoSession ioSession;
-    public Type_Eight() {}
-    public Type_Eight(IoSession ioSession){
+
+    public Type_Eight() {
+    }
+
+    public Type_Eight(IoSession ioSession) {
         this.ioSession = ioSession;
     }
 
     static SqlSessionFactory sqlSessionFactory = null;
+
     static {
         sqlSessionFactory = MyBatisUtil.getSqlSessionFactory();
     }
-    public void InsertOfflineSmg(JSONObject json){
+
+    public void InsertOfflineSmg(JSONObject json) {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         OfflineMessageMapper offlineMessageMapper = sqlSession.getMapper(OfflineMessageMapper.class);
         OfflineMessage info = new OfflineMessage();
         info.setFromUserId(Integer.valueOf(json.getString("from")));
         info.setToId(Integer.valueOf(json.getString("to")));
         info.setMessageType(json.getString("message_type"));
-       // info.setTextType(json.getString("texttype"));
-       // info.setTextContent(json.getString("textcontent"));
+        // info.setTextType(json.getString("texttype"));
+        // info.setTextContent(json.getString("textcontent"));
         info.setDate(new ThisTime().HaveThisTime());
-        System.out.println("检测"+info.getTextContent());
+        System.out.println("检测" + info.getTextContent());
         //info.setMsgId(1);
         int i = offlineMessageMapper.insert(info);
         sqlSession.commit();

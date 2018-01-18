@@ -88,7 +88,7 @@ public class MinaService {
         public boolean isResponse(IoSession arg0, Object arg1) {
 
             //
-             // if(arg1.toString().equals(String.valueOf(HEARTBEATRESPONSE))) {
+            // if(arg1.toString().equals(String.valueOf(HEARTBEATRESPONSE))) {
             //System.out.println("是响应包"); return true; }
 
             // System.out.println("不是响应包");

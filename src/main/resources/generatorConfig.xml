@@ -169,7 +169,7 @@
 
             注意，table里面很多参数都是对javaModelGenerator，context等元素的默认属性的一个复写；
          -->
-        <table tableName="" >
+        <table tableName="GroupChat" >
 
             <!-- 参考 javaModelGenerator 的 constructorBased属性-->
             <property name="constructorBased" value="false"/>
@@ -206,8 +206,8 @@
             <!-- 注意，该属性只针对MyBatis3Simple有用；
                 如果选择的runtime是MyBatis3Simple，那么会生成一个SelectAll方法，如果指定了selectAllOrderByClause，那么会在该SQL中添加指定的这个order条件；
              -->
-       <!--     <property name="selectAllOrderByClause" value="age desc,username asc"/>
--->
+            <!--     <property name="selectAllOrderByClause" value="age desc,username asc"/>
+     -->
             <!-- 如果设置为true，生成的model类会直接使用column本身的名字，而不会再使用驼峰命名方法，比如BORN_DATE，生成的属性名字就是BORN_DATE,而不会是bornDate -->
             <property name="useActualColumnNames" value="false"/>
 
@@ -246,28 +246,28 @@
                column:要重新设置的列名；
                注意，一个table元素中可以有多个columnOverride元素哈~
              -->
-<!--            <columnOverride column="username">
-                &lt;!&ndash; 使用property属性来指定列要生成的属性名称 &ndash;&gt;
-                <property name="property" value="userName"/>
+            <!--            <columnOverride column="username">
+                            &lt;!&ndash; 使用property属性来指定列要生成的属性名称 &ndash;&gt;
+                            <property name="property" value="userName"/>
 
-                &lt;!&ndash; javaType用于指定生成的domain的属性类型，使用类型的全限定名
-                <property name="javaType" value=""/>
-                 &ndash;&gt;
+                            &lt;!&ndash; javaType用于指定生成的domain的属性类型，使用类型的全限定名
+                            <property name="javaType" value=""/>
+                             &ndash;&gt;
 
-                &lt;!&ndash; jdbcType用于指定该列的JDBC类型
-                <property name="jdbcType" value=""/>
-                 &ndash;&gt;
+                            &lt;!&ndash; jdbcType用于指定该列的JDBC类型
+                            <property name="jdbcType" value=""/>
+                             &ndash;&gt;
 
-                &lt;!&ndash; typeHandler 用于指定该列使用到的TypeHandler，如果要指定，配置类型处理器的全限定名
-                    注意，mybatis中，不会生成到mybatis-config.xml中的typeHandler
-                    只会生成类似：where id = #{id,jdbcType=BIGINT,typeHandler=com._520it.mybatis.MyTypeHandler}的参数描述
-                <property name="jdbcType" value=""/>
-                &ndash;&gt;
+                            &lt;!&ndash; typeHandler 用于指定该列使用到的TypeHandler，如果要指定，配置类型处理器的全限定名
+                                注意，mybatis中，不会生成到mybatis-config.xml中的typeHandler
+                                只会生成类似：where id = #{id,jdbcType=BIGINT,typeHandler=com._520it.mybatis.MyTypeHandler}的参数描述
+                            <property name="jdbcType" value=""/>
+                            &ndash;&gt;
 
-                &lt;!&ndash; 参考table元素的delimitAllColumns配置，默认为false
-                <property name="delimitedColumnName" value=""/>
-                 &ndash;&gt;
-            </columnOverride>-->
+                            &lt;!&ndash; 参考table元素的delimitAllColumns配置，默认为false
+                            <property name="delimitedColumnName" value=""/>
+                             &ndash;&gt;
+                        </columnOverride>-->
 
             <!-- ignoreColumn设置一个MGB忽略的列，如果设置了改列，那么在生成的domain中，生成的SQL中，都不会有该列出现
                column:指定要忽略的列的名字；

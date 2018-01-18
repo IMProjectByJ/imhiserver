@@ -1,0 +1,162 @@
+2018-01-18 01:39:02 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on star-PC with PID 29132 (/home/star/IdeaProjects/imhi/target/classes started by star in /home/star/IdeaProjects/imhi) 
+2018-01-18 01:39:02 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-18 01:39:02 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-18 01:39:06 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Started ImhiApplication in 4.508 seconds (JVM running for 5.585) 
+2018-01-18 10:56:03 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on DESKTOP-F7HH9N5 with PID 1988 (C:\imhiservice\imhiserver\target\classes started by 11599 in C:\imhiservice\imhiserver) 
+2018-01-18 10:56:03 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-18 10:56:03 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-18 10:57:05 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on DESKTOP-F7HH9N5 with PID 6664 (C:\imhiservice\imhiserver\target\classes started by 11599 in C:\imhiservice\imhiserver) 
+2018-01-18 10:57:05 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-18 10:57:05 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-18 10:59:24 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on DESKTOP-F7HH9N5 with PID 15896 (C:\imhiservice\imhiserver\target\classes started by 11599 in C:\imhiservice\imhiserver) 
+2018-01-18 10:59:24 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-18 10:59:24 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-18 11:06:45 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on DESKTOP-F7HH9N5 with PID 16360 (C:\imhiservice\imhiserver\target\classes started by 11599 in C:\imhiservice\imhiserver) 
+2018-01-18 11:06:45 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-18 11:06:45 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-18 11:08:08 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on DESKTOP-F7HH9N5 with PID 4836 (C:\imhiservice\imhiserver\target\classes started by 11599 in C:\imhiservice\imhiserver) 
+2018-01-18 11:08:08 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-18 11:08:08 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-18 11:15:58 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on DESKTOP-F7HH9N5 with PID 5244 (C:\imhiservice\imhiserver\target\classes started by 11599 in C:\imhiservice\imhiserver) 
+2018-01-18 11:15:58 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-18 11:15:58 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-18 11:19:35 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on DESKTOP-F7HH9N5 with PID 10948 (C:\imhiservice\imhiserver\target\classes started by 11599 in C:\imhiservice\imhiserver) 
+2018-01-18 11:19:35 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-18 11:19:35 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-18 11:19:56 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on DESKTOP-F7HH9N5 with PID 14052 (C:\imhiservice\imhiserver\target\classes started by 11599 in C:\imhiservice\imhiserver) 
+2018-01-18 11:19:56 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-18 11:19:56 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-18 11:20:00 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Started ImhiApplication in 4.24 seconds (JVM running for 5.64) 
+2018-01-18 11:29:05 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on DESKTOP-F7HH9N5 with PID 7644 (C:\imhiservice\imhiserver\target\classes started by 11599 in C:\imhiservice\imhiserver) 
+2018-01-18 11:29:05 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-18 11:29:05 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-18 11:29:09 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Started ImhiApplication in 5.629 seconds (JVM running for 8.421) 
+2018-01-18 11:29:29 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-18 11:29:29 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 15651073563(String) 
+2018-01-18 11:29:29 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-18 11:29:30 [http-nio-8080-exec-2] DEBUG c.j.i.m.FriendMapper.selectByUserId : 
+ ==>  Preparing: select friend_id from Friend where user_id = ?  
+2018-01-18 11:29:30 [http-nio-8080-exec-2] DEBUG c.j.i.m.FriendMapper.selectByUserId : 
+ ==> Parameters: 10001(Integer) 
+2018-01-18 11:29:30 [http-nio-8080-exec-2] DEBUG c.j.i.m.FriendMapper.selectByUserId : 
+ <==      Total: 4 
+2018-01-18 11:29:30 [http-nio-8080-exec-2] DEBUG c.j.i.m.U.selectByPrimaryKey : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where user_id = ?  
+2018-01-18 11:29:30 [http-nio-8080-exec-2] DEBUG c.j.i.m.U.selectByPrimaryKey : 
+ ==> Parameters: 10000(Integer) 
+2018-01-18 11:29:30 [http-nio-8080-exec-2] DEBUG c.j.i.m.U.selectByPrimaryKey : 
+ <==      Total: 1 
+2018-01-18 11:29:30 [http-nio-8080-exec-2] DEBUG c.j.i.m.U.selectByPrimaryKey : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where user_id = ?  
+2018-01-18 11:29:30 [http-nio-8080-exec-2] DEBUG c.j.i.m.U.selectByPrimaryKey : 
+ ==> Parameters: 10011(Integer) 
+2018-01-18 11:29:30 [http-nio-8080-exec-2] DEBUG c.j.i.m.U.selectByPrimaryKey : 
+ <==      Total: 1 
+2018-01-18 11:29:30 [http-nio-8080-exec-2] DEBUG c.j.i.m.U.selectByPrimaryKey : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where user_id = ?  
+2018-01-18 11:29:30 [http-nio-8080-exec-2] DEBUG c.j.i.m.U.selectByPrimaryKey : 
+ ==> Parameters: 10022(Integer) 
+2018-01-18 11:29:30 [http-nio-8080-exec-2] DEBUG c.j.i.m.U.selectByPrimaryKey : 
+ <==      Total: 1 
+2018-01-18 11:29:30 [http-nio-8080-exec-2] DEBUG c.j.i.m.U.selectByPrimaryKey : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where user_id = ?  
+2018-01-18 11:29:30 [http-nio-8080-exec-2] DEBUG c.j.i.m.U.selectByPrimaryKey : 
+ ==> Parameters: 10029(Integer) 
+2018-01-18 11:29:30 [http-nio-8080-exec-2] DEBUG c.j.i.m.U.selectByPrimaryKey : 
+ <==      Total: 1 
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.L.selectByPrimaryKey : 
+ ==>  Preparing: select login_id, user_id, ip_addr, ip_port, login_date from LoginInfo where user_id = ?  
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.L.selectByPrimaryKey : 
+ ==> Parameters: 10001(Integer) 
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.L.selectByPrimaryKey : 
+ <==      Total: 1 
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.L.updateByPrimaryKey : 
+ ==>  Preparing: update LoginInfo set user_id = ?, ip_addr = ?, ip_port = ?, login_date = ? where user_id = ?  
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.L.updateByPrimaryKey : 
+ ==> Parameters: 10001(Integer), 192.168.253.5(String), 54427(String), 2018-01-18 11:29:30.0(Timestamp), 10001(Integer) 
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.L.updateByPrimaryKey : 
+ <==    Updates: 1 
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.FriendMapper.selectByUserId : 
+ ==>  Preparing: select friend_id from Friend where user_id = ?  
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.FriendMapper.selectByUserId : 
+ ==> Parameters: 10001(Integer) 
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.FriendMapper.selectByUserId : 
+ <==      Total: 4 
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.O.selectById : 
+ ==>  Preparing: select count( messag_id ) from offline_message where to_id = ? and from_user_id = ? and message_type = ?  
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.O.selectById : 
+ ==> Parameters: 10001(Integer), 10000(Integer), 2(String) 
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.O.selectById : 
+ <==      Total: 1 
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.O.selectById : 
+ ==>  Preparing: select count( messag_id ) from offline_message where to_id = ? and from_user_id = ? and message_type = ?  
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.O.selectById : 
+ ==> Parameters: 10001(Integer), 10011(Integer), 2(String) 
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.O.selectById : 
+ <==      Total: 1 
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.O.selectById : 
+ ==>  Preparing: select count( messag_id ) from offline_message where to_id = ? and from_user_id = ? and message_type = ?  
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.O.selectById : 
+ ==> Parameters: 10001(Integer), 10022(Integer), 2(String) 
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.O.selectById : 
+ <==      Total: 1 
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.O.selectById : 
+ ==>  Preparing: select count( messag_id ) from offline_message where to_id = ? and from_user_id = ? and message_type = ?  
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.O.selectById : 
+ ==> Parameters: 10001(Integer), 10029(Integer), 2(String) 
+2018-01-18 11:29:31 [NioProcessor-2] DEBUG c.j.i.m.O.selectById : 
+ <==      Total: 1 
+2018-01-18 11:29:45 [http-nio-8080-exec-3] DEBUG c.j.i.m.U.selectByPrimaryKey : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where user_id = ?  
+2018-01-18 11:29:45 [http-nio-8080-exec-3] DEBUG c.j.i.m.U.selectByPrimaryKey : 
+ ==> Parameters: 10001(Integer) 
+2018-01-18 11:29:45 [http-nio-8080-exec-3] DEBUG c.j.i.m.U.selectByPrimaryKey : 
+ <==      Total: 1 
+2018-01-18 11:29:46 [Thread-27] DEBUG c.j.i.m.HistoryMessageMapper.insert : 
+ ==>  Preparing: insert into history_message (message_id, user_from_id, to_id, text_type, text_content, message_type, date) values (?, ?, ?, ?, ?, ?, ?)  
+2018-01-18 11:29:46 [Thread-27] DEBUG c.j.i.m.HistoryMessageMapper.insert : 
+ ==> Parameters: null, 10001(Integer), 10001(Integer), null, null, 8(Integer), 2018-01-18 11:29:46.0(Timestamp) 
+2018-01-18 11:29:46 [Thread-27] DEBUG c.j.i.m.HistoryMessageMapper.insert : 
+ <==    Updates: 1 
+2018-01-18 11:29:46 [Thread-27] DEBUG c.j.i.m.H.insert!selectKey : 
+ ==>  Preparing: SELECT LAST_INSERT_ID()  
+2018-01-18 11:29:46 [Thread-27] DEBUG c.j.i.m.H.insert!selectKey : 
+ ==> Parameters:  
+2018-01-18 11:29:46 [Thread-27] DEBUG c.j.i.m.H.insert!selectKey : 
+ <==      Total: 1 

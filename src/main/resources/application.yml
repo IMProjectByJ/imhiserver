@@ -3,7 +3,11 @@ spring:
     url: jdbc:mysql://120.77.155.191:3306/imHi?useUnicode=true&characterEncoding=utf8&autoReconnect=true
     username: imdb
     password: imdb
+  http:
+    multipart:
+      max-file-size: 20480Mb
+      max-request-size: 20480Mb
 debug: true
 mybatis:
-  type-aliases-package: com.example.demo.model
+  type-aliases-package: com.jit.imhi.model
   config-location: classpath:mybaties.xml

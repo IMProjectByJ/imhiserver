@@ -64,7 +64,6 @@ public class OfflineMessage {
      * This method returns the value of the database column offline_message.messag_id
      *
      * @return the value of offline_message.messag_id
-     *
      * @mbggenerated Sun Jan 14 18:53:58 CST 2018
      */
     public Integer getMessagId() {
@@ -76,7 +75,6 @@ public class OfflineMessage {
      * This method sets the value of the database column offline_message.messag_id
      *
      * @param messagId the value for offline_message.messag_id
-     *
      * @mbggenerated Sun Jan 14 18:53:58 CST 2018
      */
     public void setMessagId(Integer messagId) {
@@ -88,7 +86,6 @@ public class OfflineMessage {
      * This method returns the value of the database column offline_message.to_id
      *
      * @return the value of offline_message.to_id
-     *
      * @mbggenerated Sun Jan 14 18:53:58 CST 2018
      */
     public Integer getToId() {
@@ -100,7 +97,6 @@ public class OfflineMessage {
      * This method sets the value of the database column offline_message.to_id
      *
      * @param toId the value for offline_message.to_id
-     *
      * @mbggenerated Sun Jan 14 18:53:58 CST 2018
      */
     public void setToId(Integer toId) {
@@ -112,7 +108,6 @@ public class OfflineMessage {
      * This method returns the value of the database column offline_message.from_user_id
      *
      * @return the value of offline_message.from_user_id
-     *
      * @mbggenerated Sun Jan 14 18:53:58 CST 2018
      */
     public Integer getFromUserId() {
@@ -124,7 +119,6 @@ public class OfflineMessage {
      * This method sets the value of the database column offline_message.from_user_id
      *
      * @param fromUserId the value for offline_message.from_user_id
-     *
      * @mbggenerated Sun Jan 14 18:53:58 CST 2018
      */
     public void setFromUserId(Integer fromUserId) {
@@ -136,7 +130,6 @@ public class OfflineMessage {
      * This method returns the value of the database column offline_message.text_type
      *
      * @return the value of offline_message.text_type
-     *
      * @mbggenerated Sun Jan 14 18:53:58 CST 2018
      */
     public String getTextType() {
@@ -148,7 +141,6 @@ public class OfflineMessage {
      * This method sets the value of the database column offline_message.text_type
      *
      * @param textType the value for offline_message.text_type
-     *
      * @mbggenerated Sun Jan 14 18:53:58 CST 2018
      */
     public void setTextType(String textType) {
@@ -160,7 +152,6 @@ public class OfflineMessage {
      * This method returns the value of the database column offline_message.text_content
      *
      * @return the value of offline_message.text_content
-     *
      * @mbggenerated Sun Jan 14 18:53:58 CST 2018
      */
     public String getTextContent() {
@@ -172,7 +163,6 @@ public class OfflineMessage {
      * This method sets the value of the database column offline_message.text_content
      *
      * @param textContent the value for offline_message.text_content
-     *
      * @mbggenerated Sun Jan 14 18:53:58 CST 2018
      */
     public void setTextContent(String textContent) {
@@ -184,7 +174,6 @@ public class OfflineMessage {
      * This method returns the value of the database column offline_message.message_type
      *
      * @return the value of offline_message.message_type
-     *
      * @mbggenerated Sun Jan 14 18:53:58 CST 2018
      */
     public String getMessageType() {
@@ -196,7 +185,6 @@ public class OfflineMessage {
      * This method sets the value of the database column offline_message.message_type
      *
      * @param messageType the value for offline_message.message_type
-     *
      * @mbggenerated Sun Jan 14 18:53:58 CST 2018
      */
     public void setMessageType(String messageType) {
@@ -208,7 +196,6 @@ public class OfflineMessage {
      * This method returns the value of the database column offline_message.date
      *
      * @return the value of offline_message.date
-     *
      * @mbggenerated Sun Jan 14 18:53:58 CST 2018
      */
     public Date getDate() {
@@ -220,7 +207,6 @@ public class OfflineMessage {
      * This method sets the value of the database column offline_message.date
      *
      * @param date the value for offline_message.date
-     *
      * @mbggenerated Sun Jan 14 18:53:58 CST 2018
      */
     public void setDate(Date date) {
