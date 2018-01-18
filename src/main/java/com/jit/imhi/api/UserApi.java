@@ -3,16 +3,13 @@ package com.jit.imhi.api;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
-import com.jit.imhi.mapper.FriendMapper;
 import com.jit.imhi.model.Friend;
 import com.jit.imhi.model.User;
 import com.jit.imhi.service.AuthenticationService;
 import com.jit.imhi.service.FriendService;
+import com.jit.imhi.service.SendSMSService;
 import com.jit.imhi.service.UserService;
 import com.jit.imhi.utils.MD5Util;
-import com.mina.socket.MyIoHandler;
-import jdk.nashorn.internal.scripts.JS;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,12 +25,15 @@ public class UserApi {
     private UserService userService;
     private FriendService friendService;
     private AuthenticationService authenticationService;
+    private SendSMSService sendSMSService;
     @Autowired
 
-    public UserApi(UserService userService, AuthenticationService authenticationService, FriendService friendService) {
+    public UserApi(UserService userService, AuthenticationService authenticationService,
+                   FriendService friendService, SendSMSService sendSMSService) {
         this.userService = userService;
         this.friendService = friendService;
         this.authenticationService = authenticationService;
+        this.sendSMSService = sendSMSService;
     }
 
 
@@ -238,6 +238,30 @@ public class UserApi {
             return_json.put("success", "success");
             return return_json;
         }
+    }
+
+    @GetMapping("ForgetPassword/{phone}/{password}/{numCode}") // 密码经md5加密
+
+    public JSONObject handleForget(@PathVariable String phone,
+                                   @PathVariable String password, @PathVariable String numCode) {
+
+        JSONObject jsonObject = new JSONObject();
+        JSONObject authonNum = sendSMSService.authonCode(phone, numCode);
+        if (authonNum.getString("message").equals("验证成功")) {
+            User user = userService.findUserByPhoneNum(phone);
+            if (user != null) {
+                user.setUserPassword(MD5Util.encrypt(password));
+                userService.updateInfoByUserId(user);
+                jsonObject.put("message","修改密码失败");
+            } else
+            {
+                jsonObject.put("message","账号不存在");
+            }
+        } else
+        {
+            jsonObject.put("message","请输入正确的账号");
+        }
+        return jsonObject;
     }
 
 }
