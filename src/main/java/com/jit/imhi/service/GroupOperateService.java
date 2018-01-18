@@ -2,7 +2,6 @@ package com.jit.imhi.service;
 
 
 import com.jit.imhi.mapper.GroupchatMapper;
-import com.jit.imhi.mapper.UserMapper;
 import com.jit.imhi.model.Groupchat;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -77,9 +76,13 @@ public class GroupOperateService {
     public Groupchat updateGroupInfomatin(Groupchat groupchat, MultipartFile head) {
 
         File file = fileOperateService.saveFileToNative(head, "group"+groupchat.getGroupId()+"/img/head");//存储路径
+        Groupchat groupchat1= findGroupByGroupId(groupchat.getGroupId());
         if (head != null)
-            groupchat.setHeadUrl(file.getAbsolutePath());
-        groupchatMapper.updateByPrimaryKey(groupchat);
+            groupchat1.setHeadUrl(file.getAbsolutePath());
+        if (groupchat.getGroupName() != null) {
+            groupchat1.setGroupName(groupchat.getGroupName());
+        }
+        groupchatMapper.updateByPrimaryKey(groupchat1);
         return  groupchat;
     }
     /*
