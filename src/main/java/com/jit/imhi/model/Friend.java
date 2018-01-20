@@ -9,6 +9,11 @@ public class Friend {
      *
      * @mbggenerated Sat Jan 13 10:14:02 CST 2018
      */
+    public Friend(Integer userId,Integer friendId,Date date){
+        this.userId = userId;
+        this.friendId = friendId;
+        this.addDate = date;
+    }
     private Integer userId;
 
     /**

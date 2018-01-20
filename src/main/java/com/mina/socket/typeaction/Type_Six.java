@@ -71,7 +71,7 @@ public class Type_Six {
             return num;
         }
         public int searchUserId(String  ip_addr,String ip_port){
-            int user_id = 0;
+            Integer user_id = 0;
             SqlSession sqlSession = sqlSessionFactory.openSession();
             System.out.println(ip_addr+"      "+ip_port);
            LogininfoMapper logininfoMapper = sqlSession.getMapper(LogininfoMapper.class);

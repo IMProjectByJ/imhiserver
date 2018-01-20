@@ -63,4 +63,12 @@
     select member_id, group_id, group_membership
     from GroupUser
   </select>
+  <!-- yuyisummer 1.18 20.10    List<Groupuser>  selectByUserID(@Param("memberId") Integer memberId); -->
+  <select id="selectByUserID"  parameterType="INTEGER" resultType="java.lang.String" >
+
+    select group_id
+    from GroupUser
+    where member_id = #{memberId,jdbcType=INTEGER}
+
+  </select>
 </mapper>

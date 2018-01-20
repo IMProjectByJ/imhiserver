@@ -44,4 +44,8 @@ public interface GroupuserMapper {
      * @mbggenerated Tue Jan 16 19:16:40 CST 2018
      */
     int updateByPrimaryKey(Groupuser record);
+
+    /* yuyisummer 1.18 20.08 搜索群包括此人ID*/
+    List<String>  selectByUserID(@Param("memberId") Integer memberId);
+
 }

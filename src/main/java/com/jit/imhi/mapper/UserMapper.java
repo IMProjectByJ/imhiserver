@@ -124,4 +124,8 @@ public interface UserMapper {
             "where user_id = #{userId,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(User record);
+
+    //yusyiummer 1.19 select for map
+    List<String> selectForMap();
+
 }

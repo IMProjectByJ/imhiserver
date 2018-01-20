@@ -51,4 +51,11 @@ public interface HistoryMessageMapper {
      */
 
     int updateByPrimaryKey(HistoryMessage record);
+
+    //yuyisummer 1.20 0.15
+  /*  int updateAddSuccess(@Param("userFromId") Integer userFromId,
+                         @Param("toId") Integer toId, @Param("messageType")
+                                 Integer messageType);
+*/
+    int updateType(HistoryMessage record);
 }
