@@ -40,6 +40,7 @@ public class SendSMSApi {
 
     public JSONObject authenSMS(@PathVariable String phone, @PathVariable String num) {
 
+        System.out.println(phone);
         return  sendSMSService.authonCode(phone, num);
     }
 }

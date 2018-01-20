@@ -11,7 +11,10 @@ import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
+import com.jit.imhi.mapper.UserMapper;
 import com.jit.imhi.model.SMSCode;
+import com.jit.imhi.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -34,7 +37,12 @@ public class SendSMSService {
     static final String accessKeyId = "LTAIVoiD1f8zBI4X";
     static final String accessKeySecret = "7C18ErHGLsL1MRFQLB4I2GW7tIALRn";
     private static HashMap<String, SMSCode> codeAuthen= new HashMap<String, SMSCode>();
+    private UserMapper userMapper;
 
+    @Autowired
+    public SendSMSService(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
     public static SendSmsResponse sendSms(String phoneNum, String RandomNum) throws ClientException {
 
         //可自助调整超时时间
@@ -106,22 +114,32 @@ public class SendSMSService {
 
     public JSONObject sendMsm(String phoneNum, String RandomCode) {
 
+        System.out.println("----------------------send-------------------------------");
+        System.out.println("----------------------send-------------------------------" + phoneNum);
+        System.out.println("----------------------send-------------------------------");
         JSONObject jsonObject = new JSONObject();
         SendSmsResponse response = null;
         try {
-            response = sendSms(phoneNum, RandomCode);
-            jsonObject.put("code", response.getCode());
-            jsonObject.put("message", response.getMessage());
-            jsonObject.put("RequestId",response.getRequestId());
-            jsonObject.put("BizId",response.getBizId());
-            Thread.sleep(3000L);
+
+            if (userMapper.selectByPhoneNum(phoneNum) != null) {
+                response = sendSms("" + phoneNum, RandomCode);
+                jsonObject.put("code", response.getCode());
+                jsonObject.put("message", response.getMessage());
+                jsonObject.put("RequestId",response.getRequestId());
+                jsonObject.put("BizId",response.getBizId());
+                Thread.sleep(3000L);
+            } else {
+                jsonObject.put("message", "您还没有注册账号");
+                return jsonObject;
+            }
 
         } catch (ClientException | InterruptedException e ) {
             jsonObject.put("message","错误");
             e.printStackTrace();
         }
-        if (jsonObject.getString("message") == "OK") {
-            codeAuthen.put(phoneNum,new SMSCode(RandomCode, new Date()));// 保存
+        if (jsonObject.getString("code").equals("OK")) {
+            codeAuthen.put(phoneNum + "", new SMSCode(RandomCode, new Date()));// 保存
+            jsonObject.put("message", "成功");
         }
         return jsonObject;
     }
@@ -147,8 +165,9 @@ public class SendSMSService {
             } else {
                 jsonObject.put("message", "验证码超时");
             }
+        } else {
+            jsonObject.put("message", "没有发送验证码");
         }
-        jsonObject.put("message", "没有发送验证码");
         return jsonObject;
     }
 

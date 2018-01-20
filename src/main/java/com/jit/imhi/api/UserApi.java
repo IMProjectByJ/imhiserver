@@ -245,22 +245,29 @@ public class UserApi {
     public JSONObject handleForget(@PathVariable String phone,
                                    @PathVariable String password, @PathVariable String numCode) {
 
+        System.out.println("-----------forget-----------");
+
+
         JSONObject jsonObject = new JSONObject();
         JSONObject authonNum = sendSMSService.authonCode(phone, numCode);
         if (authonNum.getString("message").equals("验证成功")) {
+
+            System.out.println("验证成功");
+
             User user = userService.findUserByPhoneNum(phone);
             if (user != null) {
                 user.setUserPassword(MD5Util.encrypt(password));
                 userService.updateInfoByUserId(user);
-                jsonObject.put("message","修改密码失败");
+                jsonObject.put("message", "修改成功");
             } else
             {
                 jsonObject.put("message","账号不存在");
             }
         } else
         {
-            jsonObject.put("message","请输入正确的账号");
+            jsonObject.put("message", "验证码不正确");
         }
+
         return jsonObject;
     }
 

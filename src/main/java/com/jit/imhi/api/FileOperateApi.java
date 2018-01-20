@@ -43,7 +43,10 @@ public class FileOperateApi {
 
 
     @PostMapping("/upload")
-    @LoginRequired // 加上此注释表明
+    @LoginRequired // 加上此注释表明需要在head 中添加token 参数
+    /*
+            @CurrentUser参数可以获得请求用户的个人信息
+     */
     public JSONObject upLoadFile(@CurrentUser User user, @RequestParam("file")MultipartFile file,
                                  @RequestParam("toId") Integer toId, @RequestParam("messageTpye") Integer messageType) {
 
