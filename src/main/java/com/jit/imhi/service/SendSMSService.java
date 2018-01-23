@@ -112,7 +112,7 @@ public class SendSMSService {
 
 
 
-    public JSONObject sendMsm(String phoneNum, String RandomCode) {
+    public JSONObject sendMsm(String phoneNum, String RandomCode, int type) {
 
         System.out.println("----------------------send-------------------------------");
         System.out.println("----------------------send-------------------------------" + phoneNum);
@@ -121,19 +121,28 @@ public class SendSMSService {
         SendSmsResponse response = null;
         try {
 
-            if (userMapper.selectByPhoneNum(phoneNum) != null) {
-                response = sendSms("" + phoneNum, RandomCode);
+            // type=1 表示注册， type=2 表示找回密码
+            User user = userMapper.selectByPhoneNum(phoneNum);
+            if ((user != null && (type == 2) )|| (user == null)&&(type == 1) ){ // 1表示注册账号
+
+/*                response = sendSms("" + phoneNum, RandomCode);
                 jsonObject.put("code", response.getCode());
                 jsonObject.put("message", response.getMessage());
                 jsonObject.put("RequestId",response.getRequestId());
-                jsonObject.put("BizId",response.getBizId());
+                jsonObject.put("BizId",response.getBizId());*/
+                jsonObject.put("code", "OK");
+                System.out.println("send code -------  "+RandomCode);
                 Thread.sleep(3000L);
-            } else {
-                jsonObject.put("message", "您还没有注册账号");
+
+            } else  {
+                if (type == 2)
+                    jsonObject.put("message", "您还没有注册账号");
+                else
+                    jsonObject.put("message", "您已经注册过了，请不要重复注册");
                 return jsonObject;
             }
 
-        } catch (ClientException | InterruptedException e ) {
+        } catch ( InterruptedException e ) {
             jsonObject.put("message","错误");
             e.printStackTrace();
         }

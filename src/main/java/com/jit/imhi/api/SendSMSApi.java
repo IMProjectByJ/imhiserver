@@ -25,11 +25,11 @@ public class SendSMSApi {
     /*
      请求发送验证码
      */
-    @GetMapping("sendSMS/{phoneNum}")
-    public JSONObject sendSMS(@PathVariable String phoneNum) {
+    @GetMapping("sendSMS/{phoneNum}/{type}")
+    public JSONObject sendSMS(@PathVariable String phoneNum,@PathVariable Integer type) {
 
             String randomNum = GetRandom.getRandomNumber(6);
-          return sendSMSService.sendMsm(phoneNum, randomNum);
+          return sendSMSService.sendMsm(phoneNum, randomNum, type);
 
     }
 

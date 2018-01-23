@@ -60,8 +60,8 @@ public class FileOperateService {
         System.out.println(getClass().getResource("/").getFile().toString());
         // ---------- for test above
         String fileName = file.getOriginalFilename();// 获得上传文件的名称
-        String nameWithoutSuffix = fileName.substring(fileName.lastIndexOf("."));
-        String suffix = fileName.replaceAll(nameWithoutSuffix,"");
+        String  suffix= fileName.substring(fileName.lastIndexOf("."));
+        String nameWithoutSuffix = fileName.replaceAll(suffix,"");
         System.out.println("上传文件名称为"+fileName);
         File  saveFile = new File(ROOTPath+Path+nameWithoutSuffix+new Date().getTime()+suffix);//将文件加上时间戳
 
