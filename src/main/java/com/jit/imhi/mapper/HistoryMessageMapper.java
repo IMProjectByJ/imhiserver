@@ -1,6 +1,7 @@
 package com.jit.imhi.mapper;
 
 import com.jit.imhi.model.HistoryMessage;
+import com.jit.imhi.model.Numinfo;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 
@@ -58,4 +59,12 @@ public interface HistoryMessageMapper {
                                  Integer messageType);
 */
     int updateType(HistoryMessage record);
+
+    /*yuyisummer  List<HistoryMessage> selectTheNotice(); */
+/*yuyisummer 1.21 0.09 selectTheNum*/
+    int selectTheNum(Numinfo numinfo);
+
+    int selectNoticNum(Numinfo numinfo);
+
+    List<HistoryMessage> selectNotic(Numinfo numinfo);
 }

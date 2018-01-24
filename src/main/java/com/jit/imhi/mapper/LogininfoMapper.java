@@ -48,6 +48,6 @@ public interface LogininfoMapper {
 
 
     //yuyisummer 1.17 测试从表中取出port+IP 对应的user_id
-    int searchUserId(@Param("ip_addr")String  ip_addr,@Param("ip_port") String ip_port);
+    Integer searchUserId(@Param("ip_addr")String  ip_addr,@Param("ip_port") String ip_port);
 
 }

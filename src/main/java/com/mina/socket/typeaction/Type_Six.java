@@ -71,12 +71,15 @@ public class Type_Six {
             return num;
         }
         public int searchUserId(String  ip_addr,String ip_port){
-            Integer user_id = 0;
+            Integer user_id ;
             SqlSession sqlSession = sqlSessionFactory.openSession();
             System.out.println(ip_addr+"      "+ip_port);
            LogininfoMapper logininfoMapper = sqlSession.getMapper(LogininfoMapper.class);
             System.out.println("测试2");
            user_id = logininfoMapper.searchUserId(ip_addr,ip_port);
+           if(user_id == null){
+               user_id = 0;
+           }
             System.out.println("测试3");
             System.out.println("num = "+user_id+"fromid = "+ip_addr +"toid = "+ip_port);
             sqlSession.close();
