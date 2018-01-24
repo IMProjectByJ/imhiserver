@@ -18,7 +18,7 @@ public class SaveMessage {
     static {
         sqlSessionFactory = MyBatisUtil.getSqlSessionFactory();
     }
-    public int InsertMessage(JSONObject json){
+    public HistoryMessage InsertMessage(JSONObject json){
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         HistoryMessageMapper historyMessageMapper = sqlSession.getMapper(HistoryMessageMapper.class);
@@ -45,18 +45,13 @@ public class SaveMessage {
             info.setTextContent(json.optString("textcontent"));
         }
 
-
-
-
-
-
-
         System.out.println("检测"+info.getTextContent());
         //info.setMsgId(1);
         int i = historyMessageMapper.insert(info);
-        System.out.println("savemessage.java "+i);
         sqlSession.commit();
+        System.out.println("savemessage.java "+i);
+        HistoryMessage hs = historyMessageMapper.selectByPrimaryKey(info.getMessageId());
         sqlSession.close();
-        return info.getMessageId();
+        return hs;
     }
 }

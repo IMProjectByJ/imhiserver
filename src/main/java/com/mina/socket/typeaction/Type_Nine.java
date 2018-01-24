@@ -27,12 +27,14 @@ public class Type_Nine {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         FriendMapper friendMapper = sqlSession.getMapper(FriendMapper.class);
         int i = friendMapper.insert(friend);
+        if(!friend.getFriendId().equals(friend.getUserId()))
         i += friendMapper.insert(friend1);
         sqlSession.commit();
         sqlSession.close();
         System.out.println("添加好友，条数：" + i);
     }
     public void ChangeTheType(HistoryMessage historyMessage){
+        int old_message_type = 8;
         SqlSession sqlSession = sqlSessionFactory.openSession();
         HistoryMessageMapper historyMessageMapper = sqlSession.getMapper(HistoryMessageMapper.class);
         historyMessageMapper.updateType(historyMessage);

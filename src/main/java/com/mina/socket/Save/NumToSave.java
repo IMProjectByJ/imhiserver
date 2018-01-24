@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.mina.core.session.IoSession;
 
 import java.awt.*;
+import java.util.Map;
 
 public class NumToSave {
     private IoSession ioSession;
@@ -21,6 +22,8 @@ public class NumToSave {
     static {
         sqlSessionFactory = MyBatisUtil.getSqlSessionFactory();
     }
+
+
 
     public static void offToSave(Numinfo numinfo) {
         SqlSession sqlSession = sqlSessionFactory.openSession();

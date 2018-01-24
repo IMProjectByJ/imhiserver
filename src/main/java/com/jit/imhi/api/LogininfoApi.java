@@ -32,7 +32,7 @@ public class LogininfoApi {
     @GetMapping("insert&update")
     public boolean insertorupdate(@RequestBody Logininfo logininfo) {
         System.out.println("调用insertorupdate");
-        if (logininfoService.find(logininfo) != null) {
+        if (logininfoService.find (logininfo) != null) {
             update(logininfo);
         } else
             insert(logininfo);

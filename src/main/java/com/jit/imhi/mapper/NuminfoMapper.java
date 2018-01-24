@@ -53,4 +53,9 @@ public interface NuminfoMapper {
 
     //yuyisummer 1.19 22.04
     int updateNoneOld(Numinfo record);
+
+    //yuyisummer 1.20 23.28
+    String selectNumOne(Numinfo record);
+
+    String selectNumTwo(Numinfo record);
 }
