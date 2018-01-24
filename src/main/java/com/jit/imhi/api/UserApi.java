@@ -174,8 +174,11 @@ public class UserApi {
     //响应详细信息
     @GetMapping("details/{userId}")
     public Object handleDetails(@PathVariable Integer userId){
+        System.out.println("TEST-------------------");
         JSONObject jsonObject = new JSONObject();
         User user = userService.findUserByUserId(userId);
+
+
 
         String jsonTomap = new Gson().toJson(user);
         System.out.println(jsonTomap);
@@ -183,7 +186,13 @@ public class UserApi {
         System.out.println(jsonObject.get("birth"));
 
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-        String str=sdf.format(user.getBirth());
+        String str;
+
+        if (user.getBirth() == null) {
+            str = "1995-12-14";
+        } else {
+            str = sdf.format(user.getBirth());
+        }
         System.out.println(str);
 
         jsonObject.put("birth", str);
@@ -238,6 +247,43 @@ public class UserApi {
             return_json.put("success", "success");
             return return_json;
         }
+    }
+
+    // 响应个人信息修改
+    @PostMapping("information_post")
+
+    public Object handleInformationPost(@RequestBody String json)
+    {
+        if (json == null || json.equals(""))
+        {
+            return  null;
+        }
+
+        System.out.println("响应用户更新个人信息"+json);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject = JSON.parseObject(json);
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        try {
+            date = dateFormat.parse(jsonObject.getString("birth"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+        jsonObject.put("birth", date);
+        String str = new Gson().toJson(jsonObject);
+        System.out.println(str);
+
+        User user = new Gson().fromJson(str, User.class);
+        System.out.println("测试");
+        System.out.println(user.toString());
+        JSONObject return_json = new JSONObject();
+
+        int num = userService.updateInfoByUserId(user);
+        System.out.println(num);
+        return null;
     }
 
 }
