@@ -71,6 +71,12 @@ public class NumlnfoApi {
             }
             list.addAll(list1);
         }
+//        if(list.size() == 0){
+//            HistoryMessage historyMessage = new HistoryMessage();
+//            historyMessage.setMessageType(0);
+//            list.add(historyMessage);
+//        }
+
     return  list;
     }
 

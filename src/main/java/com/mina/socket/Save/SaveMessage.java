@@ -4,12 +4,15 @@ import com.jit.imhi.mapper.HistoryMessageMapper;
 import com.jit.imhi.mapper.OfflineMessageMapper;
 import com.jit.imhi.model.HistoryMessage;
 import com.jit.imhi.model.OfflineMessage;
+import com.mina.socket.MyIoHandler;
 import com.mina.socket.Util.MyBatisUtil;
 import com.mina.socket.Util.ThisTime;
 import net.sf.json.JSONObject;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.mina.core.session.IoSession;
+
+import java.util.Date;
 
 public class SaveMessage {
     private IoSession ioSession;
@@ -24,9 +27,18 @@ public class SaveMessage {
         HistoryMessageMapper historyMessageMapper = sqlSession.getMapper(HistoryMessageMapper.class);
         HistoryMessage info = new HistoryMessage();
         info.setUserFromId(Integer.valueOf(json.optString("from")));
-        info.setMessageType(Integer.valueOf(json.optString("message_type")));
-        info.setDate(new ThisTime().HaveThisTime());
+        String message_type = json.optString("message_type");
+        info.setMessageType(Integer.valueOf(message_type));
+        //info.setDate(new ThisTime().HaveThisTime());
 
+        if (message_type.equals("8"))
+            info.setDate(ThisTime.HaveThisTime());
+        else {
+            System.out.println(json.getString("date"));
+
+
+            info.setDate(ThisTime.StringToDate(json.getString("date")));
+        }
         Integer to;
         if (!json.has("to")){
             // json.put("to", 1);

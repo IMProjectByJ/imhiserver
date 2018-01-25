@@ -17,4 +17,17 @@ public class ThisTime {
         }
         return date1;
     }
+    public  static Date StringToDate(String date) {
+
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+       // String dateTime = df.format(date);
+        Date date1 = null;
+        try {
+            date1 = df.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date1;
+    }
+
 }

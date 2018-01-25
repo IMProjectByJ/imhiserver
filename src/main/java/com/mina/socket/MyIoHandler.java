@@ -32,7 +32,7 @@ import com.mina.socket.typeaction.*;
 
 public class MyIoHandler extends IoHandlerAdapter {
     Map<String, IoSession> map = new HashMap<String, IoSession>();
-    Map<String,String> chating = new HashMap<>();
+    Map<String, String> chating = new HashMap<>();
     Numinfo numinfo1;
     private int count = 0;
     IoSession sendaddfriend;
@@ -130,7 +130,7 @@ public class MyIoHandler extends IoHandlerAdapter {
                     to_id = js.getString("to");
                     saveMessage = new SaveMessage();
 
-                   // new_id
+                    // new_id
                     HistoryMessage historyMessage = saveMessage.InsertMessage(js);
                     new_id = historyMessage.getMessageId();
                     sendaddfriend = null;
@@ -151,13 +151,13 @@ public class MyIoHandler extends IoHandlerAdapter {
                         NumInfoMap.mapNuminfo.get(to_id).put("9999|3", numinfo1);
                         System.out.println("sendaddfriend不为空");
                         JSONObject json = new JSONObject();
-                      //  JSONObject json1 = JSONObject.fromObject(numinfo1);
+                        //  JSONObject json1 = JSONObject.fromObject(numinfo1);
 
 
-                        System.out.println("type:8 ="+historyMessage.getDate());
+                        System.out.println("type:8 =" + historyMessage.getDate());
                         String updatedate = DateToMySQLDateTimeString(historyMessage.getDate());
                         JSONObject json1 = JSONObject.fromObject(historyMessage);
-                        json1.put("date",updatedate);
+                        json1.put("date", updatedate);
                         System.out.println(json1.toString());
 
 
@@ -168,7 +168,7 @@ public class MyIoHandler extends IoHandlerAdapter {
                         //离线存储
                         System.out.println("sendaddfriend   为空");
                         NumToSave.offToSave(numinfo1);
-                       }
+                    }
                     break;
                 //同意好友请求
                 case "9":
@@ -194,11 +194,15 @@ public class MyIoHandler extends IoHandlerAdapter {
                     js.put("texttype", "1");
                     js.put("textcontent", "我们已经成为好友了，快来聊天吧");
                     js.put("message_type", "2");
+                    String time = DateToMySQLDateTimeString(new ThisTime().HaveThisTime());
+                    js.put("date", time);
+                    System.out.println(js.toString());
                     HistoryMessage historyMessage1 = saveMessage.InsertMessage(js);
+
                     new_id = historyMessage1.getMessageId();
                     //同8的存入方式，这里再写一遍
                     sendaddfriend = null;
-                      //准备动作，存入numinfo方式，map，还是数据库
+                    //准备动作，存入numinfo方式，map，还是数据库
                     to = js.getString("to");
                     from_id = js.getString("from");
                     numinfo1 = new Numinfo();
@@ -221,9 +225,9 @@ public class MyIoHandler extends IoHandlerAdapter {
                         JSONObject json = JSONObject.fromObject(historyMessage1);
                         JSONObject json1 = new JSONObject();
                         String updatedate = DateToMySQLDateTimeString(historyMessage1.getDate());
-                        json.put("date",updatedate);
-                        json1.put("message_type","9");
-                        json1.put("textcontent",json);
+                        json.put("date", updatedate);
+                        json1.put("message_type", "9");
+                        json1.put("textcontent", json);
                         sendaddfriend.write(json1);
                     } else {
                         //离线存储
@@ -245,35 +249,60 @@ public class MyIoHandler extends IoHandlerAdapter {
                     //这时要给客户端信息了，不过是拒绝的信息
                     sendaddfriend = map.get(to);
                     if (sendaddfriend != null) {
-                      System.out.println("sendaddfriend不为空");
+                        System.out.println("sendaddfriend不为空");
                         sendaddfriend.write(js);
                     }
                     break;
 
                 case "2":
                 case "3":
-                case "11":
+
                     IoSession sendaddfriend = null;
                     String to1 = js.getString("to");
+                    saveMessage = new SaveMessage();
+                    historyMessage = saveMessage.InsertMessage(js);
+                    new_id = historyMessage.getMessageId();
+                    System.out.println(new_id);
+                    js.put("message_id", new_id);
+                    sendaddfriend = null;
+                    //准备动作，存入numinfo方式，map，还是数据库
+                    // System.out.println(mapNuminfo.get(to));
+                    Numinfo numinfo2 = new Numinfo();
                     if (message_type == "11") {
                         //取出群主的ID,准备发送消息
                         Type_Eleven type_eleven = new Type_Eleven();
                         String group_owner = type_eleven.FindGroupOwner(Integer.valueOf(to1));
                         System.out.println("the group " + to1 + " owner :" + group_owner);
                         to = group_owner;
+                        numinfo2.setFriendType("3");
+                    } else {
+                        numinfo2.setFriendType("1");
                     }
+                    numinfo2.setNewId(new_id);
+                    numinfo2.setUserId(Integer.valueOf(to1));
+                    numinfo2.setFriendId(Integer.valueOf(js.getString("from")));
                     sendaddfriend = map.get(to);
 
                     if (sendaddfriend != null) {
                         System.out.println("sendaddfriend不为空");
-                        JSONObject json = JSONObject.fromObject(message);
-                        sendaddfriend.write(json);
+                        //  JSONObject json = JSONObject.fromObject(message);
+                        if (chating.get(to) != null && chating.get(to).equals(user_id)) {
+                            numinfo2.setOldId(new_id);
+                            NumInfoMap.mapNuminfo.get(to).put(from_id + "|1", numinfo2);
+                        } else {
+                            NumInfoMap.mapNuminfo.get(to).put(from_id + "|1", numinfo2);
+                        }
+                        sendaddfriend.write(js);
+
                     } else {
                         //离线存储
                         System.out.println("sendaddfriend为空");
-                        Type_Eight type_eight = new Type_Eight();
-                        type_eight.InsertOfflineSmg(js);
+                        NumToSave.offToSave(numinfo2);
+                        //Type_Eight type_eight = new Type_Eight();
+                        //  type_eight.InsertOfflineSmg(js);
                     }
+                    break;
+                case "11":
                     break;
                 case "13":
                     user_id = js.getString("from");
@@ -292,11 +321,11 @@ public class MyIoHandler extends IoHandlerAdapter {
                         friendtype = "3";
                     }
                     key = to + "|" + friendtype;
-                    Numinfo numinfo2 = NumInfoMap.mapNuminfo.get(user_id).get(key);
+                    Numinfo numinfo3 = NumInfoMap.mapNuminfo.get(user_id).get(key);
                     //其实是需要最新的id(本地)
                     String old_id = js.getString("textcontent");
-                    numinfo2.setOldId(Integer.valueOf(old_id));
-                    NumInfoMap.mapNuminfo.get(user_id).put(key, numinfo2);
+                    numinfo3.setOldId(Integer.valueOf(old_id));
+                    NumInfoMap.mapNuminfo.get(user_id).put(key, numinfo3);
                     break;
             }
 

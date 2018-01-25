@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.mina.core.session.IoSession;
 
+import java.util.Date;
 import java.util.List;
 
 public class Type_Eight {
@@ -33,10 +34,15 @@ public class Type_Eight {
         OfflineMessage info = new OfflineMessage();
         info.setFromUserId(Integer.valueOf(json.getString("from")));
         info.setToId(Integer.valueOf(json.getString("to")));
-        info.setMessageType(json.getString("message_type"));
+        String message_type = json.getString("message_type");
+        info.setMessageType(message_type);
         // info.setTextType(json.getString("texttype"));
         // info.setTextContent(json.getString("textcontent"));
-        info.setDate(new ThisTime().HaveThisTime());
+        //
+        if (message_type.equals("8"))
+            info.setDate(new ThisTime().HaveThisTime());
+        else
+            info.setDate(new Date(json.getString("date")));
         System.out.println("检测" + info.getTextContent());
         //info.setMsgId(1);
         int i = offlineMessageMapper.insert(info);
