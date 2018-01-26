@@ -1,9 +1,9 @@
-package com.mina.socket.onlineaction;
+package com.jit.imhi.socket.onlineaction;
 
 import com.jit.imhi.mapper.FriendMapper;
 import com.jit.imhi.mapper.LogininfoMapper;
 import com.jit.imhi.model.Friend;
-import com.mina.socket.Util.MyBatisUtil;
+import com.jit.imhi.socket.Util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.mina.core.session.IoSession;

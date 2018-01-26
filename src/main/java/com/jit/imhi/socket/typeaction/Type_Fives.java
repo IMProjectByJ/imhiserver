@@ -1,4 +1,4 @@
-package com.mina.socket.typeaction;
+package com.jit.imhi.socket.typeaction;
 
 import com.alibaba.fastjson.JSONObject;
 import org.apache.mina.core.future.WriteFuture;

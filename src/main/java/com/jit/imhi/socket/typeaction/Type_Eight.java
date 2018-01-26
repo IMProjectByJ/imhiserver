@@ -1,9 +1,9 @@
-package com.mina.socket.typeaction;
+package com.jit.imhi.socket.typeaction;
 
 import com.jit.imhi.mapper.OfflineMessageMapper;
 import com.jit.imhi.model.OfflineMessage;
-import com.mina.socket.Util.MyBatisUtil;
-import com.mina.socket.Util.ThisTime;
+import com.jit.imhi.socket.Util.MyBatisUtil;
+import com.jit.imhi.socket.Util.ThisTime;
 import net.sf.json.JSONObject;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;

@@ -1,4 +1,4 @@
-package com.mina.socket;
+package com.jit.imhi.socket;
 
 import org.apache.mina.core.service.IoAcceptor;
 import org.apache.mina.core.session.IdleStatus;

@@ -1,11 +1,11 @@
-package com.mina.socket.typeaction;
+package com.jit.imhi.socket.typeaction;
 import com.jit.imhi.api.LogininfoApi;
 import com.jit.imhi.mapper.GroupchatMapper;
 import com.jit.imhi.mapper.LogininfoMapper;
 import com.jit.imhi.mapper.OfflineMessageMapper;
 import com.jit.imhi.model.Logininfo;
 import com.jit.imhi.service.LogininfoService;
-import com.mina.socket.Util.MyBatisUtil;
+import com.jit.imhi.socket.Util.MyBatisUtil;
 import org.apache.ibatis.session.*;
 import org.apache.mina.core.session.IoSession;
 import org.springframework.beans.factory.annotation.Autowired;

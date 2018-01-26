@@ -10,7 +10,7 @@ import com.jit.imhi.service.AuthenticationService;
 import com.jit.imhi.service.FriendService;
 import com.jit.imhi.service.UserService;
 import com.jit.imhi.utils.MD5Util;
-import com.mina.socket.MyIoHandler;
+import com.jit.imhi.socket.MyIoHandler;
 import jdk.nashorn.internal.scripts.JS;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;

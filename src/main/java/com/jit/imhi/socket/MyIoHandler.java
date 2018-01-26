@@ -1,19 +1,19 @@
-package com.mina.socket;
+package com.jit.imhi.socket;
 
 
 import com.jit.imhi.api.LogininfoApi;
-import com.jit.imhi.model.Friend;
-import com.jit.imhi.model.HistoryMessage;
-import com.jit.imhi.model.Logininfo;
-import com.jit.imhi.model.Numinfo;
+import com.jit.imhi.mapper.UserMapper;
+import com.jit.imhi.model.*;
 import com.jit.imhi.service.LogininfoService;
-import com.mina.socket.Save.NumToHave;
-import com.mina.socket.Save.NumToSave;
-import com.mina.socket.Save.SaveMessage;
-import com.mina.socket.Util.ThisTime;
-import com.mina.socket.onlineaction.FriendsOnline;
-import com.mina.socket.typeaction.Type_Fives;
-import com.mina.socket.typeaction.Type_Six;
+import com.jit.imhi.service.UserService;
+import com.jit.imhi.socket.Save.NumToHave;
+import com.jit.imhi.socket.Save.NumToSave;
+import com.jit.imhi.socket.Save.SaveMessage;
+import com.jit.imhi.socket.Save.ceshi;
+import com.jit.imhi.socket.Util.ThisTime;
+import com.jit.imhi.socket.onlineaction.FriendsOnline;
+import com.jit.imhi.socket.typeaction.Type_Fives;
+import com.jit.imhi.socket.typeaction.Type_Six;
 import com.sun.javafx.collections.MappingChange;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -28,7 +28,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import com.mina.socket.typeaction.*;
+import com.jit.imhi.socket.typeaction.*;
+import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
+
 
 public class MyIoHandler extends IoHandlerAdapter {
     Map<String, IoSession> map = new HashMap<String, IoSession>();
@@ -36,6 +43,8 @@ public class MyIoHandler extends IoHandlerAdapter {
     Numinfo numinfo1;
     private int count = 0;
     IoSession sendaddfriend;
+    @Autowired
+    ceshi ce ;
 
     public void sessionCreated(IoSession session) {
         System.out.print("新客户连接\t");
@@ -78,6 +87,7 @@ public class MyIoHandler extends IoHandlerAdapter {
                     // Type_Fives type_fives = new Type_Fives(session);
                     break;
                 case "6":
+                //    System.out.println(getBeanTest().test().getNikname());
                     System.out.println("类型准备");
                     Logininfo logininfo = new Logininfo();
                     // Date date = ThisTime();
@@ -158,11 +168,15 @@ public class MyIoHandler extends IoHandlerAdapter {
                         String updatedate = DateToMySQLDateTimeString(historyMessage.getDate());
                         JSONObject json1 = JSONObject.fromObject(historyMessage);
                         json1.put("date", updatedate);
+
                         System.out.println(json1.toString());
 
 
                         json.put("message_type", "8");
                         json.put("textcontent", json1);
+
+                        User user = getUserService().findUserByUserId(Integer.valueOf(from_id));
+                        json.put("nikname",user.getNikname());
                         sendaddfriend.write(json);
                     } else {
                         //离线存储
@@ -281,18 +295,25 @@ public class MyIoHandler extends IoHandlerAdapter {
                     numinfo2.setNewId(new_id);
                     numinfo2.setUserId(Integer.valueOf(to1));
                     numinfo2.setFriendId(Integer.valueOf(js.getString("from")));
-                    sendaddfriend = map.get(to);
+                    sendaddfriend = map.get(to1);
+                    JSONObject jsonObject1 = new JSONObject();
+                    Date date2 = historyMessage.getDate();
+                    JSONObject js1 =  JSONObject.fromObject(historyMessage);
+                    js1.put("date",DateToMySQLDateTimeString(date2));
+                    jsonObject1.put("message_type", "2");
 
+                    jsonObject1.put("textcontent",js1);
                     if (sendaddfriend != null) {
                         System.out.println("sendaddfriend不为空");
                         //  JSONObject json = JSONObject.fromObject(message);
-                        if (chating.get(to) != null && chating.get(to).equals(user_id)) {
+                        if (chating.get(to1) != null && chating.get(to1).equals(user_id)) {
                             numinfo2.setOldId(new_id);
-                            NumInfoMap.mapNuminfo.get(to).put(from_id + "|1", numinfo2);
+                            NumInfoMap.mapNuminfo.get(to1).put(from_id + "|1", numinfo2);
                         } else {
-                            NumInfoMap.mapNuminfo.get(to).put(from_id + "|1", numinfo2);
+                            System.out.println(to1);
+                            NumInfoMap.mapNuminfo.get(to1).put(from_id + "|1", numinfo2);
                         }
-                        sendaddfriend.write(js);
+                        sendaddfriend.write(jsonObject1);
 
                     } else {
                         //离线存储
@@ -421,4 +442,19 @@ public class MyIoHandler extends IoHandlerAdapter {
 
         return ret.toString();
     }
+
+
+    private static ApplicationContext applicationContext;//启动类set入，调用下面set方法
+
+    public static void setApplicationContext(ApplicationContext context) {
+        applicationContext = context;
+    }
+    public ceshi getBeanTest(){
+       return (ceshi)applicationContext.getBean(ceshi.class);
+    }
+
+    public UserService getUserService(){
+        return (UserService)applicationContext.getBean(UserService.class);
+    }
+
 }

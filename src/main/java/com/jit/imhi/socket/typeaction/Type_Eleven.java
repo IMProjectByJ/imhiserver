@@ -1,7 +1,7 @@
-package com.mina.socket.typeaction;
+package com.jit.imhi.socket.typeaction;
 
 import com.jit.imhi.mapper.GroupchatMapper;
-import com.mina.socket.Util.MyBatisUtil;
+import com.jit.imhi.socket.Util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.mina.core.session.IoSession;

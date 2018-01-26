@@ -1,4 +1,4 @@
-package com.mina.socket.Util;
+package com.jit.imhi.socket.Util;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;

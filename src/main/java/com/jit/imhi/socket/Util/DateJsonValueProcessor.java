@@ -1,4 +1,4 @@
-package com.mina.socket.Util;
+package com.jit.imhi.socket.Util;
 
 import net.sf.json.JsonConfig;
 import net.sf.json.processors.JsonValueProcessor;

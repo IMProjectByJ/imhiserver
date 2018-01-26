@@ -1,12 +1,12 @@
-package com.mina.socket.Save;
+package com.jit.imhi.socket.Save;
 
 import com.jit.imhi.mapper.HistoryMessageMapper;
 import com.jit.imhi.mapper.OfflineMessageMapper;
 import com.jit.imhi.model.HistoryMessage;
 import com.jit.imhi.model.OfflineMessage;
-import com.mina.socket.MyIoHandler;
-import com.mina.socket.Util.MyBatisUtil;
-import com.mina.socket.Util.ThisTime;
+import com.jit.imhi.socket.MyIoHandler;
+import com.jit.imhi.socket.Util.MyBatisUtil;
+import com.jit.imhi.socket.Util.ThisTime;
 import net.sf.json.JSONObject;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -33,10 +33,12 @@ public class SaveMessage {
 
         if (message_type.equals("8"))
             info.setDate(ThisTime.HaveThisTime());
+//        else if(message_type.equals("2")){
+//
+//         //   info.setDate(ThisTime.StringToDate(json.getString("date")));
+//        }
         else {
             System.out.println(json.getString("date"));
-
-
             info.setDate(ThisTime.StringToDate(json.getString("date")));
         }
         Integer to;

@@ -1,4 +1,4 @@
-package com.mina.socket;
+package com.jit.imhi.socket;
 
 import com.jit.imhi.model.Numinfo;
 

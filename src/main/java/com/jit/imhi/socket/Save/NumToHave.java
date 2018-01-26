@@ -1,4 +1,4 @@
-package com.mina.socket.Save;
+package com.jit.imhi.socket.Save;
 
 import com.jit.imhi.mapper.FriendMapper;
 import com.jit.imhi.mapper.GroupchatMapper;
@@ -6,7 +6,7 @@ import com.jit.imhi.mapper.GroupuserMapper;
 import com.jit.imhi.mapper.NuminfoMapper;
 import com.jit.imhi.model.Friend;
 import com.jit.imhi.model.Numinfo;
-import com.mina.socket.Util.MyBatisUtil;
+import com.jit.imhi.socket.Util.MyBatisUtil;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.mina.core.session.IoSession;
