@@ -2,6 +2,7 @@ package com.jit.imhi.socket;
 
 
 import com.jit.imhi.api.LogininfoApi;
+import com.jit.imhi.mapper.NuminfoMapper;
 import com.jit.imhi.mapper.UserMapper;
 import com.jit.imhi.model.*;
 import com.jit.imhi.service.LogininfoService;
@@ -43,6 +44,7 @@ public class MyIoHandler extends IoHandlerAdapter {
     Numinfo numinfo1;
     private int count = 0;
     IoSession sendaddfriend;
+    Map<String, Numinfo> numinfo;
     @Autowired
     ceshi ce ;
 
@@ -74,7 +76,7 @@ public class MyIoHandler extends IoHandlerAdapter {
             //将信息存入总的历史信息里
 
             String from_id, to_id;
-            from_id = js.getString("from");
+          //  from_id = js.getString("from");
             String message_type = js.getString("message_type");
             System.out.println(message_type + "type类型");
             String user_id = "";
@@ -103,34 +105,45 @@ public class MyIoHandler extends IoHandlerAdapter {
                     type_six.inorup(logininfo);
                     //将信息存放在Map中
                     user_id = js.getString("from");
+
                     map.put(user_id, session);
                     System.out.println("map.put  " + user_id + "   " + session);
 
-
                     //接下来要写，离线好友信息
                     //Map<String, Map<String, Numinfo>> mapNuminfo
-                    Map<String, Numinfo> numinfo = new HashMap<>();
+                    numinfo = new HashMap<>();
+                   // NumInfoMap.mapNuminfo.put(user_id,numinfo);
                     List<Numinfo> list = new ArrayList<>();
                     list = NumToHave.HaveOffNum(user_id);
+                    System.out.println("type6:"+list.size());
                     for (int i = 0; i < list.size(); i++) {
                         Numinfo numinfo1 = list.get(i);
                         if (numinfo1 != null) {
 
                             String key = String.valueOf(list.get(i).getFriendId()) + "|"
                                     + list.get(i).getFriendType();
+
                             numinfo.put(key, numinfo1);
+                            System.out.println("numinfo1:"+numinfo1.getUserId());
+                            System.out.println("numinfo1:"+numinfo1.getNewId());
+                            System.out.println("numinfo1:"+key);
+                        //    NumInfoMap.mapNuminfo.get(user_id).put(key, numinfo1);
 
                         }
                     }
                     //这里需要同时去数据库里取对应的数据
                     //numinfo.put("9999",null);
+                    //NumInfoMap.setMapCache(user_id,numinfo);
                     NumInfoMap.mapNuminfo.put(user_id, numinfo);
+                    System.out.println("type6:"+user_id+" numinfo数量"+numinfo.size());
 
+                    System.out.println("case6测试2");
+                    NumInfoMap.ceshi();
                     JSONObject jsonObject = new JSONObject();
                     jsonObject.put("message_type", "7");
                     jsonObject.put("textcontent", numinfo);
                     session.write(jsonObject);
-                    numinfo.clear();
+                  //  numinfo.clear();
                     break;
                 //8 添加好友 ，11 加群
 
@@ -138,6 +151,7 @@ public class MyIoHandler extends IoHandlerAdapter {
                 //请求加好友
                 case "8":
                     to_id = js.getString("to");
+                    from_id = js.getString("from");
                     saveMessage = new SaveMessage();
 
                     // new_id
@@ -188,6 +202,7 @@ public class MyIoHandler extends IoHandlerAdapter {
                 case "9":
 
                     to_id = js.getString("to");
+                    from_id = js.getString("from");
                     Date date1 = ThisTime.HaveThisTime();
                     Friend friend = new Friend(Integer.valueOf(from_id), Integer.valueOf(to_id),
                             date1);
@@ -254,6 +269,7 @@ public class MyIoHandler extends IoHandlerAdapter {
                 case "10":
                     //去数据库里把那条请求的数据置为9
                     to_id = js.getString("to");
+                    from_id = js.getString("from");
                     HistoryMessage refuseMsg = new HistoryMessage();
                     refuseMsg.setUserFromId(Integer.valueOf(to_id));
                     refuseMsg.setToId(Integer.valueOf(from_id));
@@ -270,7 +286,7 @@ public class MyIoHandler extends IoHandlerAdapter {
 
                 case "2":
                 case "3":
-
+                    from_id = js.getString("from");
                     IoSession sendaddfriend = null;
                     String to1 = js.getString("to");
                     saveMessage = new SaveMessage();
@@ -306,8 +322,10 @@ public class MyIoHandler extends IoHandlerAdapter {
                     if (sendaddfriend != null) {
                         System.out.println("sendaddfriend不为空");
                         //  JSONObject json = JSONObject.fromObject(message);
+
                         if (chating.get(to1) != null && chating.get(to1).equals(user_id)) {
                             numinfo2.setOldId(new_id);
+
                             NumInfoMap.mapNuminfo.get(to1).put(from_id + "|1", numinfo2);
                         } else {
                             System.out.println(to1);
@@ -326,12 +344,14 @@ public class MyIoHandler extends IoHandlerAdapter {
                 case "11":
                     break;
                 case "13":
-                    user_id = js.getString("from");
-                    to = js.getString("to");
+                    JSONObject jsonObject2 = JSONObject.fromObject(js.getString("textcontent"));
+
+                    user_id =jsonObject2.getString("from");
+                    to = jsonObject2.getString("to");
                     chating.put(user_id, to);
 
 
-                    String text_type = js.getString("texttype");
+                    String text_type = jsonObject2.getString("texttype");
                     String key = "";
                     String friendtype = "";
                     if (text_type.equals("7")) {
@@ -342,10 +362,29 @@ public class MyIoHandler extends IoHandlerAdapter {
                         friendtype = "3";
                     }
                     key = to + "|" + friendtype;
+                    NumInfoMap.ceshi();
                     Numinfo numinfo3 = NumInfoMap.mapNuminfo.get(user_id).get(key);
+
+                  //  System.out.println("type13:"+numinfo.get(user_id).getNewId());
+
+                    if(NumInfoMap.mapNuminfo.get(user_id).isEmpty()){
+                        System.out.println("numinfo is empty");
+                    }
+                    NumInfoMap.ceshi();
+                    System.out.println("type13:"+key);
+                    System.out.println("type13:"+NumInfoMap.mapNuminfo.size());
+
+
+                    System.out.println("type13:"+numinfo3.getFriendType());
+                    System.out.println("type13:"+numinfo3.getUserId());
+                    System.out.println("type13:"+numinfo3.getFriendId());
+                    System.out.println("type13:"+numinfo3.getNewId());
                     //其实是需要最新的id(本地)
-                    String old_id = js.getString("textcontent");
-                    numinfo3.setOldId(Integer.valueOf(old_id));
+                  //  String old_id = js.getString("textcontent");
+
+                   // numinfo3.setOldId(Integer.valueOf(old_id));
+                    numinfo3.setOldId(Integer.valueOf(numinfo3.getNewId()));
+                    System.out.println("type13:"+numinfo3.getOldId());
                     NumInfoMap.mapNuminfo.get(user_id).put(key, numinfo3);
                     break;
             }
@@ -365,7 +404,9 @@ public class MyIoHandler extends IoHandlerAdapter {
     @Override
     public void sessionClosed(IoSession session) {
 
+
         System.out.println("断开连接" + session.toString());
+        NumInfoMap.ceshi();
         try {
 
 
@@ -378,7 +419,8 @@ public class MyIoHandler extends IoHandlerAdapter {
 
                 Map<String, Numinfo> numinfoMap = NumInfoMap.mapNuminfo.get(String.valueOf(user_id));
                 for (Numinfo value : numinfoMap.values()) {
-                    NumToSave.offToSave(value);
+                   // NumToSave.offToSave(value);
+                    NumToSave.allInfoSave(value);
                 }
                 numinfoMap.clear();
                 map.put(String.valueOf(user_id), null);

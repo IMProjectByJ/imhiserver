@@ -24,7 +24,6 @@ public class NumToSave {
     }
 
 
-
     public static void offToSave(Numinfo numinfo) {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         NuminfoMapper numinfoMapper = sqlSession.getMapper(NuminfoMapper.class);
@@ -32,9 +31,9 @@ public class NumToSave {
                 , numinfo.getFriendType());
         int i = 0;
         if (numinfo1 != null) {
-           numinfoMapper.updateNoneOld(numinfo);
+            numinfoMapper.updateNoneOld(numinfo);
             System.out.println("替换离线信息数量");
-        }else {
+        } else {
             i = numinfoMapper.insert(numinfo);
             System.out.println("输入离线信息数量+" + i);
         }
@@ -44,4 +43,18 @@ public class NumToSave {
         sqlSession.close();
     }
 
+    public static void allInfoSave(Numinfo numinfo) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        NuminfoMapper numinfoMapper = sqlSession.getMapper(NuminfoMapper.class);
+        int i = numinfoMapper.updateByPrimaryKey(numinfo);
+        if (i > 0) {
+            System.out.println("update success");
+        } else {
+            System.out.println("update failed");
+        }
+
+
+        sqlSession.commit();
+        sqlSession.close();
+    }
 }

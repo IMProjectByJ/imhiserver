@@ -60,10 +60,10 @@ public class NumToHave {
             list.add(numinfo);
         sqlSession.close();
         //测试有没有成功
-        /*
+
         for(int i = 0;i<list.size();i++){
-            System.out.println(list.get(i).getFriendId());
-        }*/
+            System.out.println("numtohave"+list.get(i).getFriendId());
+        }
         return  list;
     }
 

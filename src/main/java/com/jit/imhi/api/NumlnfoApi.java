@@ -44,14 +44,23 @@ public class NumlnfoApi {
         numinfo.setUserId(jsonObject1.getInteger("user_id"));
        String friendType =  numinfo.getFriendType();
         //接下来要通过这些new_id,friendtype为3的要额外去找一次信息
-        System.out.println("接收到了新的jsonObect"+jsonObject.toString());
         if(friendType.equals("1")){
-            new_id = numInfoService.SelectNumOne(numinfo);
-            numinfo.setFriendType("2");
-            numinfo.setNewId(Integer.valueOf(new_id));
-            int from = numinfo.getUserId();
-            numinfo.setUserId(from);
-            list = historyMessageService.selectNotic(numinfo);
+
+            Numinfo numinfo1 = numInfoService.selectByPrimaryKey(jsonObject1.getInteger("user_id"),
+                    jsonObject1.getInteger("friend_id"),  jsonObject1.getString("friend_type"));
+
+//            if(!numinfo1.getNewId().equals(jsonObject1.getInteger("new_id")) ) {
+            if(!numinfo1.getNewId().equals(numinfo1.getOldId())) {
+            //    numinfo.setOldId(jsonObject1.getInteger("new_id"));
+                numinfo.setOldId(numinfo1.getOldId());
+                numinfo.setNewId(numinfo1.getNewId());
+                new_id = numInfoService.SelectNumOne(numinfo);
+                numinfo.setFriendType("2");
+                numinfo.setNewId(Integer.valueOf(new_id));
+                int from = numinfo.getUserId();
+                numinfo.setUserId(from);
+                list = historyMessageService.selectNotic(numinfo);
+            }
 
         } else if(friendType.equals("2")){
             new_id = numInfoService.SelectNumTwo(numinfo);

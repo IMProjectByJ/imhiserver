@@ -5,6 +5,7 @@ package com.jit.imhi.api;
   头像上传与下载api
  */
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.jit.imhi.annotation.CurrentUser;
 import com.jit.imhi.annotation.LoginRequired;
@@ -85,4 +86,31 @@ public class ImageOperateApi {
         return  null;
 
     }
+
+    @PostMapping("/headDownload")
+    public Object downHead(@RequestBody String user){
+        if (user == null || user .equals(""))
+            return null;
+
+        System.out.println("TEST_user"+user);
+        JSONObject jsonObject = JSON.parseObject(user);
+
+        String imgPath = jsonObject.getString("headUrl");
+
+        System.out.println(imgPath);
+
+        File file = new File(imgPath);
+        if (file != null) {
+            System.out.println("file is exist");
+
+            return ResponseEntity
+                    .ok()
+                    .contentLength(file.length())
+                    .contentType(MediaType.parseMediaType("application/octet-stream"))
+                    .body(new FileSystemResource(file));// 返回文件
+        }
+
+        return null;
+    }
+
 }
