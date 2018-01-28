@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.jit.imhi.model.HistoryMessage;
 import com.jit.imhi.model.Numinfo;
+import com.jit.imhi.service.GroupOperateService;
 import com.jit.imhi.service.HistoryMessageService;
 import com.jit.imhi.service.NumInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +20,15 @@ import java.util.List;
 public class NumlnfoApi {
     private NumInfoService numInfoService;
     private HistoryMessageService historyMessageService;
+    private GroupOperateService groupOperateService;
 
 
     @Autowired
-    public NumlnfoApi(NumInfoService numInfoService,HistoryMessageService historyMessageService) {
+    public NumlnfoApi(NumInfoService numInfoService,HistoryMessageService historyMessageService,
+                      GroupOperateService groupOperateService) {
         this.numInfoService = numInfoService;
         this.historyMessageService = historyMessageService;
+        this.groupOperateService = groupOperateService;
     }
     @GetMapping("register/{json}")
     public Object  SelectNum(@PathVariable String json){
@@ -74,6 +78,20 @@ public class NumlnfoApi {
             numinfo.setNewId(Integer.valueOf(new_id));
             list = historyMessageService.selectNotic(numinfo);
             System.out.println("查找拒绝消息");
+
+
+            List<String> groupown = groupOperateService.selectAllOwn(jsonObject1.getInteger("user_id"));
+            numinfo.setFriendType("11");
+            for(int i = 0;i<groupown.size();i++){
+                numinfo.setUserId(Integer.valueOf(groupown.get(i)));
+                list1 = historyMessageService.selectNotic(numinfo);
+                list.addAll(list1);
+            }
+            //    numinfo.setFriendType("11");
+         //   list1 = historyMessageService.selectNotic(numinfo);
+
+
+
             Numinfo numinfo1 = numInfoService.selectByPrimaryKey(numinfo.getUserId(),9999,"4");
             if(numinfo1!=null) {
                 list1 = historyMessageService.selectNotic(numinfo);

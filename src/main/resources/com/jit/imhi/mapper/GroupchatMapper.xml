@@ -91,4 +91,5 @@
     from GroupChat
     where   user_id  = #{userId,jdbcType=INTEGER}
   </select>
+
 </mapper>

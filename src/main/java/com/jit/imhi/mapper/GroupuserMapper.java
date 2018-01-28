@@ -1,5 +1,6 @@
 package com.jit.imhi.mapper;
 
+import com.jit.imhi.model.Groupchat;
 import com.jit.imhi.model.Groupuser;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
@@ -46,6 +47,8 @@ public interface GroupuserMapper {
     int updateByPrimaryKey(Groupuser record);
 
     /* yuyisummer 1.18 20.08 搜索群包括此人ID*/
-    List<String>  selectByUserID(@Param("memberId") Integer memberId);
+    List<Groupchat>  selectByUserID(@Param("memberId") Integer memberId);
+    /*yuyisummer 1.27 23.37 搜索群包括此人ID，用来查数数量的*/
+    List<String>  selectByUserIdNum(@Param("memberId") Integer memberId);
 
 }

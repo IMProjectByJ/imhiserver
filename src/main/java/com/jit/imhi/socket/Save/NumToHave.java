@@ -33,7 +33,8 @@ public class NumToHave {
         List<String> groupowner = new ArrayList<>();
         Integer userid = Integer.valueOf(user_id);
         friendlist = friendMapper.selectByUserId(userid);
-        grouplist = groupuserMapper.selectByUserID(userid);
+       // grouplist = groupuserMapper.selectByUserID(userid);
+        grouplist = groupuserMapper.selectByUserIdNum(userid);
         groupowner = groupchatMapper.selectAllOwn(userid);
         Numinfo numinfo = null;
 

@@ -64,7 +64,16 @@
     from GroupUser
   </select>
   <!-- yuyisummer 1.18 20.10    List<Groupuser>  selectByUserID(@Param("memberId") Integer memberId); -->
-  <select id="selectByUserID"  parameterType="INTEGER" resultType="java.lang.String" >
+  <select id="selectByUserID"  parameterType="INTEGER" resultType="com.jit.imhi.model.Groupchat" >
+
+    select c.group_id , c.user_id, c.group_name, c.create_date, c.head_url
+    from GroupUser u
+     join GroupChat c  on u.group_id = c.group_id
+    where u.member_id = #{memberId,jdbcType=INTEGER}
+  </select>
+
+  <!--yuyisummer selectByUserIdNum-->
+  <select id="selectByUserIdNum"  parameterType="INTEGER" resultType="java.lang.String" >
 
     select group_id
     from GroupUser
