@@ -77,7 +77,7 @@ public class GroupChatApi {
             jsonObject.put("message", "创建失败");
         }else {
             jsonObject.put("message","创建成功");
-            jsonObject.put("result",jsonObject);
+            jsonObject.put("result",groupchat);
         }
         return  jsonObject;
     }
