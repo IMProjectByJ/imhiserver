@@ -5305,11 +5305,3 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLSyntaxErrorException: Table 'imH
  ==> Parameters: 10001(Integer) 
 2018-01-29 15:24:10 [http-nio-8080-exec-2] DEBUG c.j.i.m.U.selectByPrimaryKey : 
  <==      Total: 1 
-2018-01-29 15:41:44 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
- Starting ImhiApplication on DESKTOP-F7HH9N5 with PID 1000 (C:\imhiservice\imhiserver\target\classes started by 11599 in C:\imhiservice\imhiserver) 
-2018-01-29 15:41:44 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
- Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
-2018-01-29 15:41:44 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
- No active profile set, falling back to default profiles: default 
-2018-01-29 15:41:50 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
- Started ImhiApplication in 6.678 seconds (JVM running for 9.121) 

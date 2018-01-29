@@ -27,5 +27,7 @@ public class HistoryMessageService {
         return  historyMessageMapper.selectNoticNum(numinfo);
     }
     public List<HistoryMessage>   selectNotic(Numinfo numinfo){return historyMessageMapper.selectNotic(numinfo); }
-
+    public int delFriend(Integer userId, Integer friendId, Integer messageType) {
+        return historyMessageMapper.deleteFriend(userId, friendId, messageType);
+    }
 }
