@@ -290,4 +290,21 @@ public class User {
     public void setMotto(String motto) {
         this.motto = motto == null ? null : motto.trim();
     }
+
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", phoneNum='" + phoneNum + '\'' +
+                ", nikname='" + nikname + '\'' +
+                ", headUrl='" + headUrl + '\'' +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                ", birth=" + birth +
+                ", userPassword='" + userPassword + '\'' +
+                ", motto='" + motto + '\'' +
+                '}';
+    }
+
 }

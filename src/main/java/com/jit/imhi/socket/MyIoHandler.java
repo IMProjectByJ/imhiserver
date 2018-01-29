@@ -5,6 +5,7 @@ import com.jit.imhi.api.LogininfoApi;
 import com.jit.imhi.mapper.NuminfoMapper;
 import com.jit.imhi.mapper.UserMapper;
 import com.jit.imhi.model.*;
+import com.jit.imhi.service.GroupOperateService;
 import com.jit.imhi.service.LogininfoService;
 import com.jit.imhi.service.UserService;
 import com.jit.imhi.socket.Save.NumToHave;
@@ -25,6 +26,7 @@ import org.apache.mina.core.session.IoSession;
 
 import java.net.InetSocketAddress;
 
+import java.security.acl.Group;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -45,8 +47,9 @@ public class MyIoHandler extends IoHandlerAdapter {
     private int count = 0;
     IoSession sendaddfriend;
     Map<String, Numinfo> numinfo;
+    Type_Nine type_nine = new Type_Nine();
     @Autowired
-    ceshi ce ;
+    ceshi ce;
 
     public void sessionCreated(IoSession session) {
         System.out.print("新客户连接\t");
@@ -76,7 +79,7 @@ public class MyIoHandler extends IoHandlerAdapter {
             //将信息存入总的历史信息里
 
             String from_id, to_id;
-          //  from_id = js.getString("from");
+            //  from_id = js.getString("from");
             String message_type = js.getString("message_type");
             System.out.println(message_type + "type类型");
             String user_id = "";
@@ -89,7 +92,7 @@ public class MyIoHandler extends IoHandlerAdapter {
                     // Type_Fives type_fives = new Type_Fives(session);
                     break;
                 case "6":
-                //    System.out.println(getBeanTest().test().getNikname());
+                    //    System.out.println(getBeanTest().test().getNikname());
                     System.out.println("类型准备");
                     Logininfo logininfo = new Logininfo();
                     // Date date = ThisTime();
@@ -112,10 +115,10 @@ public class MyIoHandler extends IoHandlerAdapter {
                     //接下来要写，离线好友信息
                     //Map<String, Map<String, Numinfo>> mapNuminfo
                     numinfo = new HashMap<>();
-                   // NumInfoMap.mapNuminfo.put(user_id,numinfo);
+                    // NumInfoMap.mapNuminfo.put(user_id,numinfo);
                     List<Numinfo> list = new ArrayList<>();
                     list = NumToHave.HaveOffNum(user_id);
-                    System.out.println("type6:"+list.size());
+                    System.out.println("type6:" + list.size());
                     for (int i = 0; i < list.size(); i++) {
                         Numinfo numinfo1 = list.get(i);
                         if (numinfo1 != null) {
@@ -124,10 +127,10 @@ public class MyIoHandler extends IoHandlerAdapter {
                                     + list.get(i).getFriendType();
 
                             numinfo.put(key, numinfo1);
-                            System.out.println("numinfo1:"+numinfo1.getUserId());
-                            System.out.println("numinfo1:"+numinfo1.getNewId());
-                            System.out.println("numinfo1:"+key);
-                        //    NumInfoMap.mapNuminfo.get(user_id).put(key, numinfo1);
+                            System.out.println("numinfo1:" + numinfo1.getUserId());
+                            System.out.println("numinfo1:" + numinfo1.getNewId());
+                            System.out.println("numinfo1:" + key);
+                            //    NumInfoMap.mapNuminfo.get(user_id).put(key, numinfo1);
 
                         }
                     }
@@ -135,7 +138,7 @@ public class MyIoHandler extends IoHandlerAdapter {
                     //numinfo.put("9999",null);
                     //NumInfoMap.setMapCache(user_id,numinfo);
                     NumInfoMap.mapNuminfo.put(user_id, numinfo);
-                    System.out.println("type6:"+user_id+" numinfo数量"+numinfo.size());
+                    System.out.println("type6:" + user_id + " numinfo数量" + numinfo.size());
 
                     System.out.println("case6测试2");
                     NumInfoMap.ceshi();
@@ -143,7 +146,7 @@ public class MyIoHandler extends IoHandlerAdapter {
                     jsonObject.put("message_type", "7");
                     jsonObject.put("textcontent", numinfo);
                     session.write(jsonObject);
-                  //  numinfo.clear();
+                    //  numinfo.clear();
                     break;
                 //8 添加好友 ，11 加群
 
@@ -190,7 +193,7 @@ public class MyIoHandler extends IoHandlerAdapter {
                         json.put("textcontent", json1);
 
                         User user = getUserService().findUserByUserId(Integer.valueOf(from_id));
-                        json.put("nikname",user.getNikname());
+                        json.put("nikname", user.getNikname());
                         sendaddfriend.write(json);
                     } else {
                         //离线存储
@@ -209,7 +212,7 @@ public class MyIoHandler extends IoHandlerAdapter {
                     Friend friend1 = new Friend(Integer.valueOf(to_id), Integer.valueOf(from_id),
                             date1);
                     //要先去数据库里把数据加好
-                    Type_Nine type_nine = new Type_Nine();
+
                     type_nine.InsertFriend(friend, friend1);
                     //去数据库里把那条请求的数据置为9
                     HistoryMessage historyMessage2 = new HistoryMessage();
@@ -286,6 +289,7 @@ public class MyIoHandler extends IoHandlerAdapter {
 
                 case "2":
                 case "3":
+                case "11":
                     from_id = js.getString("from");
                     IoSession sendaddfriend = null;
                     String to1 = js.getString("to");
@@ -298,27 +302,35 @@ public class MyIoHandler extends IoHandlerAdapter {
                     //准备动作，存入numinfo方式，map，还是数据库
                     // System.out.println(mapNuminfo.get(to));
                     Numinfo numinfo2 = new Numinfo();
-                    if (message_type == "11") {
+                    if (message_type.equals("11")) {
                         //取出群主的ID,准备发送消息
+
                         Type_Eleven type_eleven = new Type_Eleven();
                         String group_owner = type_eleven.FindGroupOwner(Integer.valueOf(to1));
                         System.out.println("the group " + to1 + " owner :" + group_owner);
-                        to = group_owner;
+                        to1 = group_owner;
                         numinfo2.setFriendType("3");
                     } else {
                         numinfo2.setFriendType("1");
                     }
                     numinfo2.setNewId(new_id);
                     numinfo2.setUserId(Integer.valueOf(to1));
-                    numinfo2.setFriendId(Integer.valueOf(js.getString("from")));
+                    //
+                    //
+                    if(message_type.equals("11")){
+                        numinfo2.setFriendId(9999);
+                    } else {
+                        numinfo2.setFriendId(Integer.valueOf(js.getString("from")));
+                    }
+
                     sendaddfriend = map.get(to1);
                     JSONObject jsonObject1 = new JSONObject();
                     Date date2 = historyMessage.getDate();
-                    JSONObject js1 =  JSONObject.fromObject(historyMessage);
-                    js1.put("date",DateToMySQLDateTimeString(date2));
+                    JSONObject js1 = JSONObject.fromObject(historyMessage);
+                    js1.put("date", DateToMySQLDateTimeString(date2));
                     jsonObject1.put("message_type", "2");
 
-                    jsonObject1.put("textcontent",js1);
+                    jsonObject1.put("textcontent", js1);
                     if (sendaddfriend != null) {
                         System.out.println("sendaddfriend不为空");
                         //  JSONObject json = JSONObject.fromObject(message);
@@ -341,12 +353,11 @@ public class MyIoHandler extends IoHandlerAdapter {
                         //  type_eight.InsertOfflineSmg(js);
                     }
                     break;
-                case "11":
-                    break;
+
                 case "13":
                     JSONObject jsonObject2 = JSONObject.fromObject(js.getString("textcontent"));
 
-                    user_id =jsonObject2.getString("from");
+                    user_id = jsonObject2.getString("from");
                     to = jsonObject2.getString("to");
                     chating.put(user_id, to);
 
@@ -365,27 +376,38 @@ public class MyIoHandler extends IoHandlerAdapter {
                     NumInfoMap.ceshi();
                     Numinfo numinfo3 = NumInfoMap.mapNuminfo.get(user_id).get(key);
 
-                  //  System.out.println("type13:"+numinfo.get(user_id).getNewId());
+                    //  System.out.println("type13:"+numinfo.get(user_id).getNewId());
 
-                    if(NumInfoMap.mapNuminfo.get(user_id).isEmpty()){
+                    if (NumInfoMap.mapNuminfo.get(user_id).isEmpty()) {
                         System.out.println("numinfo is empty");
                     }
                     NumInfoMap.ceshi();
-                    System.out.println("type13:"+key);
-                    System.out.println("type13:"+NumInfoMap.mapNuminfo.size());
+                    System.out.println("type13:" + key);
+                    System.out.println("type13:" + NumInfoMap.mapNuminfo.size());
 
 
-                    System.out.println("type13:"+numinfo3.getFriendType());
-                    System.out.println("type13:"+numinfo3.getUserId());
-                    System.out.println("type13:"+numinfo3.getFriendId());
-                    System.out.println("type13:"+numinfo3.getNewId());
                     //其实是需要最新的id(本地)
-                  //  String old_id = js.getString("textcontent");
-
-                   // numinfo3.setOldId(Integer.valueOf(old_id));
+                    //  String old_id = js.getString("textcontent");
+                    // numinfo3.setOldId(Integer.valueOf(old_id));
                     numinfo3.setOldId(Integer.valueOf(numinfo3.getNewId()));
-                    System.out.println("type13:"+numinfo3.getOldId());
+                    System.out.println("type13:" + numinfo3.getOldId());
                     NumInfoMap.mapNuminfo.get(user_id).put(key, numinfo3);
+                    break;
+                case "14":
+
+                    System.out.println("jsstr + :" + js);
+                    to_id = js.getString("to");
+                    from_id = js.getString("from");
+                    HistoryMessage historyMessage14 = new HistoryMessage();
+                    historyMessage14.setUserFromId(Integer.valueOf(to_id));
+                    historyMessage14.setToId(Integer.valueOf(from_id));
+                    historyMessage14.setMessageType(14);
+                    type_nine.ChangeTheGroupType(historyMessage14);
+                    Groupuser groupuser = new Groupuser();
+                    groupuser.setGroupId(Integer.valueOf(from_id));
+                    groupuser.setGroupMembership("2");
+                    groupuser.setMemberId(Integer.valueOf(to_id));
+                    getGroupOperateService().insertGroupuser(groupuser);
                     break;
             }
 
@@ -419,7 +441,7 @@ public class MyIoHandler extends IoHandlerAdapter {
 
                 Map<String, Numinfo> numinfoMap = NumInfoMap.mapNuminfo.get(String.valueOf(user_id));
                 for (Numinfo value : numinfoMap.values()) {
-                   // NumToSave.offToSave(value);
+                    // NumToSave.offToSave(value);
                     NumToSave.allInfoSave(value);
                 }
                 numinfoMap.clear();
@@ -491,12 +513,16 @@ public class MyIoHandler extends IoHandlerAdapter {
     public static void setApplicationContext(ApplicationContext context) {
         applicationContext = context;
     }
-    public ceshi getBeanTest(){
-       return (ceshi)applicationContext.getBean(ceshi.class);
+
+    public ceshi getBeanTest() {
+        return (ceshi) applicationContext.getBean(ceshi.class);
     }
 
-    public UserService getUserService(){
-        return (UserService)applicationContext.getBean(UserService.class);
+    public UserService getUserService() {
+        return (UserService) applicationContext.getBean(UserService.class);
     }
 
+    public GroupOperateService getGroupOperateService() {
+        return applicationContext.getBean(GroupOperateService.class);
+    }
 }

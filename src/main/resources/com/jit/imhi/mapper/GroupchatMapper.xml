@@ -71,7 +71,7 @@
   <select id="selectOwner" resultType="INTEGER">
     select user_id
     from GroupChat
-    where group_id = #{groupId,jdbcType=INTEGER}
+    where group_id = #{group_id,jdbcType=INTEGER}
   </select>
 
 

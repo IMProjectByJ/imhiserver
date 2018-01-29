@@ -124,5 +124,15 @@ public class GroupOperateService {
         return  groupchatMapper.selectAllOwn(userId);
     }
 
+    public int Groupuserinsert(Groupuser groupuser){
+        return  groupuserMapper.insert(groupuser);
+    }
+    public int Groupuserupdate(Groupuser groupuser){
+        return  groupuserMapper.updateByPrimaryKey(groupuser);
+    }
+    public int insertGroupuser(Groupuser groupuser){
+        return groupuserMapper.insert(groupuser);
+    }
+
 
 }

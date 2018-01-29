@@ -38,17 +38,18 @@ public class UserService {
 
     public User insertUser(User user) {
         Integer id;
-        if ((id = userMapper.insert(user)) != null)
+        if ((findUserByPhoneNum(user.getPhoneNum()))== null)
         {
             if (user.getNikname() == null)
             {
                 user.setNikname(GetRandom.getRandomString(5));
             }
-            if (user.getMotto() == null)
+            if (user.getMotto()== null || user.getMotto().length() == 0)
             {
                 user.setMotto("这个人很懒，什么都没有留下");
             }
-            return findUserByPhoneNum(user.getPhoneNum());
+            userMapper.insert(user); // insert
+            return user;
         }
         return null;
     }

@@ -41,4 +41,11 @@ public class Type_Nine {
         sqlSession.commit();
         sqlSession.close();
     }
+    public void ChangeTheGroupType(HistoryMessage historyMessage){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        HistoryMessageMapper historyMessageMapper = sqlSession.getMapper(HistoryMessageMapper.class);
+        historyMessageMapper.updateGroupType(historyMessage);
+        sqlSession.commit();
+        sqlSession.close();
+    }
 }

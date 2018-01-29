@@ -96,6 +96,17 @@
     and to_id = #{toId,jdbcType=INTEGER}
   </update>
 
+    <update id="updateGroupType" parameterType="com.jit.imhi.model.HistoryMessage">
+        update history_message
+        set
+        message_type = #{messageType,jdbcType=INTEGER}
+
+        where message_type = 11
+        and user_from_id = #{userFromId,jdbcType=INTEGER}
+        and to_id = #{toId,jdbcType=INTEGER}
+    </update>
+
+
     <!--yuyisummer 1.20 23.55  -->
     <select id="selectTheNum" resultType="java.lang.Integer"  parameterType="com.jit.imhi.model.Numinfo" >
     select COUNT(message_id)

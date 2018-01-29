@@ -67,4 +67,6 @@ public interface HistoryMessageMapper {
     int selectNoticNum(Numinfo numinfo);
 
     List<HistoryMessage> selectNotic(Numinfo numinfo);
+
+    int updateGroupType(HistoryMessage record);
 }

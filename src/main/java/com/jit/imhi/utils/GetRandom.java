@@ -22,7 +22,7 @@ public class GetRandom {
         Random random = new Random();
         StringBuffer sb = new StringBuffer();
         int number = 1+ random.nextInt(base.length()-1);
-
+        sb.append(base.charAt(number));
         for (int i=1; i < length; i++) {
             number = random.nextInt(base.length());
             sb.append(base.charAt(number));
