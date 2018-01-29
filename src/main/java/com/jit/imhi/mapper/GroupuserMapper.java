@@ -1,8 +1,10 @@
 package com.jit.imhi.mapper;
 
 import com.jit.imhi.model.Groupuser;
-import java.util.List;
+import com.jit.imhi.model.User;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface GroupuserMapper {
     /**
@@ -44,4 +46,6 @@ public interface GroupuserMapper {
      * @mbggenerated Tue Jan 16 19:16:40 CST 2018
      */
     int updateByPrimaryKey(Groupuser record);
+
+    List<User> selectUsers(@Param("groupId") Integer groupId);
 }

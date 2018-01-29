@@ -1,0 +1,659 @@
+2018-01-23 14:16:37 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on star-PC with PID 9843 (/home/star/IdeaProjects/imhi/target/classes started by star in /home/star/IdeaProjects/imhi) 
+2018-01-23 14:16:37 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-23 14:16:37 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-23 14:16:43 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Started ImhiApplication in 6.744 seconds (JVM running for 8.899) 
+2018-01-23 14:19:47 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 14:19:47 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18020536089(String) 
+2018-01-23 14:19:47 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-23 14:21:57 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 14:21:57 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18020536089(String) 
+2018-01-23 14:21:57 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-23 14:22:41 [http-nio-8080-exec-5] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 14:22:41 [http-nio-8080-exec-5] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18020536089(String) 
+2018-01-23 14:22:41 [http-nio-8080-exec-5] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-23 14:31:17 [http-nio-8080-exec-7] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 14:31:17 [http-nio-8080-exec-7] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18020536089(String) 
+2018-01-23 14:31:17 [http-nio-8080-exec-7] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-23 14:32:36 [http-nio-8080-exec-9] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 14:32:36 [http-nio-8080-exec-9] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18020536089(String) 
+2018-01-23 14:32:36 [http-nio-8080-exec-9] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-23 14:42:56 [http-nio-8080-exec-4] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 14:42:56 [http-nio-8080-exec-4] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18020536089(String) 
+2018-01-23 14:42:58 [http-nio-8080-exec-4] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-23 14:43:08 [http-nio-8080-exec-4] ERROR c.j.i.config.GloablExceptionHandler : 
+ java.lang.NullPointerException
+	at com.jit.imhi.service.SendSMSService.sendMsm(SendSMSService.java:140)
+	at com.jit.imhi.api.SendSMSApi.sendSMS(SendSMSApi.java:32)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+ 
+2018-01-23 14:44:03 [http-nio-8080-exec-5] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 14:44:03 [http-nio-8080-exec-5] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18020536089(String) 
+2018-01-23 14:44:03 [http-nio-8080-exec-5] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-23 14:44:32 [http-nio-8080-exec-6] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 14:44:32 [http-nio-8080-exec-6] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18020536089(String) 
+2018-01-23 14:44:32 [http-nio-8080-exec-6] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-23 14:45:45 [http-nio-8080-exec-8] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 14:45:45 [http-nio-8080-exec-8] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18020536089(String) 
+2018-01-23 14:45:45 [http-nio-8080-exec-8] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-23 14:46:08 [http-nio-8080-exec-9] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 14:46:08 [http-nio-8080-exec-9] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18020536089(String) 
+2018-01-23 14:46:08 [http-nio-8080-exec-9] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-23 14:46:46 [http-nio-8080-exec-10] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 14:46:46 [http-nio-8080-exec-10] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18852073390(String) 
+2018-01-23 14:46:46 [http-nio-8080-exec-10] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 14:54:10 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on star-PC with PID 11509 (/home/star/IdeaProjects/imhi/target/classes started by star in /home/star/IdeaProjects/imhi) 
+2018-01-23 14:54:10 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-23 14:54:10 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-23 14:54:15 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Started ImhiApplication in 6.668 seconds (JVM running for 7.92) 
+2018-01-23 14:55:01 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 14:55:01 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18020536089(String) 
+2018-01-23 14:55:01 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-23 14:55:51 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on star-PC with PID 11660 (/home/star/IdeaProjects/imhi/target/classes started by star in /home/star/IdeaProjects/imhi) 
+2018-01-23 14:55:51 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-23 14:55:51 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-23 14:55:56 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Started ImhiApplication in 6.526 seconds (JVM running for 7.645) 
+2018-01-23 14:56:06 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 14:56:06 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18020536089(String) 
+2018-01-23 14:56:06 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-23 14:57:43 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on star-PC with PID 11859 (/home/star/IdeaProjects/imhi/target/classes started by star in /home/star/IdeaProjects/imhi) 
+2018-01-23 14:57:43 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-23 14:57:43 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-23 14:57:50 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Started ImhiApplication in 8.565 seconds (JVM running for 10.617) 
+2018-01-23 14:58:04 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 14:58:04 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18020536089(String) 
+2018-01-23 14:58:04 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-23 14:59:02 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 14:59:02 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18852073390(String) 
+2018-01-23 14:59:02 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 14:59:29 [http-nio-8080-exec-4] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 14:59:29 [http-nio-8080-exec-4] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18852073390(String) 
+2018-01-23 14:59:29 [http-nio-8080-exec-4] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 14:59:29 [http-nio-8080-exec-4] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ ==>  Preparing: insert into user (user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto) values (?, ?, ?, ?, ?, ?, ?, ?, ?)  
+2018-01-23 14:59:29 [http-nio-8080-exec-4] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ ==> Parameters: null, 18852073390(String), 刘运星(String), null, null, null, null, 8693a0881a7d30f96e385dc96937fa05(String), null 
+2018-01-23 14:59:29 [http-nio-8080-exec-4] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ <==    Updates: 1 
+2018-01-23 14:59:29 [http-nio-8080-exec-4] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 14:59:29 [http-nio-8080-exec-4] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18852073390(String) 
+2018-01-23 14:59:29 [http-nio-8080-exec-4] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-23 15:10:40 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on star-PC with PID 12400 (/home/star/IdeaProjects/imhi/target/classes started by star in /home/star/IdeaProjects/imhi) 
+2018-01-23 15:10:40 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-23 15:10:40 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-23 15:10:46 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Started ImhiApplication in 6.954 seconds (JVM running for 8.132) 
+2018-01-23 15:10:57 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:10:57 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18852073390(String) 
+2018-01-23 15:10:57 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:11:12 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:11:12 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18852073390(String) 
+2018-01-23 15:11:12 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:11:12 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:11:12 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18852073390(String) 
+2018-01-23 15:11:12 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:11:58 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on star-PC with PID 12540 (/home/star/IdeaProjects/imhi/target/classes started by star in /home/star/IdeaProjects/imhi) 
+2018-01-23 15:11:58 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-23 15:11:58 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-23 15:12:03 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Started ImhiApplication in 5.952 seconds (JVM running for 6.967) 
+2018-01-23 15:12:18 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:12:18 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18852073390(String) 
+2018-01-23 15:12:18 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:12:30 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:12:30 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18852073390(String) 
+2018-01-23 15:12:30 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:12:30 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:12:30 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18852073390(String) 
+2018-01-23 15:12:30 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:12:30 [http-nio-8080-exec-3] ERROR c.j.i.config.GloablExceptionHandler : 
+ java.lang.NullPointerException
+	at com.jit.imhi.service.UserService.insertUser(UserService.java:41)
+	at com.jit.imhi.api.UserApi.add(UserApi.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+ 
+2018-01-23 15:12:53 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on star-PC with PID 12676 (/home/star/IdeaProjects/imhi/target/classes started by star in /home/star/IdeaProjects/imhi) 
+2018-01-23 15:12:53 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-23 15:12:53 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-23 15:12:58 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Started ImhiApplication in 6.62 seconds (JVM running for 7.834) 
+2018-01-23 15:13:55 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:13:55 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18852073390(String) 
+2018-01-23 15:13:55 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:14:07 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:14:07 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18852073390(String) 
+2018-01-23 15:14:07 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:14:07 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:14:07 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18852073390(String) 
+2018-01-23 15:14:07 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:14:07 [http-nio-8080-exec-2] ERROR c.j.i.config.GloablExceptionHandler : 
+ java.lang.NullPointerException
+	at com.jit.imhi.service.UserService.insertUser(UserService.java:47)
+	at com.jit.imhi.api.UserApi.add(UserApi.java:116)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:868)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1459)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+ 
+2018-01-23 15:16:25 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on star-PC with PID 12884 (/home/star/IdeaProjects/imhi/target/classes started by star in /home/star/IdeaProjects/imhi) 
+2018-01-23 15:16:25 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-23 15:16:25 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-23 15:16:31 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Started ImhiApplication in 6.925 seconds (JVM running for 8.333) 
+2018-01-23 15:16:38 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:16:38 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18852073390(String) 
+2018-01-23 15:16:38 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:16:46 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:16:46 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18852073390(String) 
+2018-01-23 15:16:46 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:16:46 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:16:46 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18852073390(String) 
+2018-01-23 15:16:46 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:16:46 [http-nio-8080-exec-2] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ ==>  Preparing: insert into user (user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto) values (?, ?, ?, ?, ?, ?, ?, ?, ?)  
+2018-01-23 15:16:46 [http-nio-8080-exec-2] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ ==> Parameters: null, 18852073390(String), 刘运星(String), null, null, null, null, 8693a0881a7d30f96e385dc96937fa05(String), 这个人很懒，什么都没有留下(String) 
+2018-01-23 15:16:46 [http-nio-8080-exec-2] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ <==    Updates: 1 
+2018-01-23 15:17:42 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on star-PC with PID 13054 (/home/star/IdeaProjects/imhi/target/classes started by star in /home/star/IdeaProjects/imhi) 
+2018-01-23 15:17:42 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-23 15:17:42 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-23 15:17:47 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Started ImhiApplication in 5.62 seconds (JVM running for 6.638) 
+2018-01-23 15:17:58 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:17:58 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 18852073390(String) 
+2018-01-23 15:17:58 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-23 15:18:54 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:18:54 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260901234(String) 
+2018-01-23 15:18:54 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:19:03 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:19:03 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260901234(String) 
+2018-01-23 15:19:03 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:19:03 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:19:03 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260901234(String) 
+2018-01-23 15:19:03 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:19:03 [http-nio-8080-exec-3] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ ==>  Preparing: insert into user (user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto) values (?, ?, ?, ?, ?, ?, ?, ?, ?)  
+2018-01-23 15:19:03 [http-nio-8080-exec-3] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ ==> Parameters: null, 13260901234(String), 刘运星(String), null, null, null, null, 8693a0881a7d30f96e385dc96937fa05(String), 这个人很懒，什么都没有留下(String) 
+2018-01-23 15:19:03 [http-nio-8080-exec-3] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ <==    Updates: 1 
+2018-01-23 15:19:45 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on star-PC with PID 13214 (/home/star/IdeaProjects/imhi/target/classes started by star in /home/star/IdeaProjects/imhi) 
+2018-01-23 15:19:45 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-23 15:19:45 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-23 15:19:49 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Started ImhiApplication in 5.326 seconds (JVM running for 6.367) 
+2018-01-23 15:21:09 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:21:09 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260901234(String) 
+2018-01-23 15:21:09 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:21:15 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:21:15 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260901234(String) 
+2018-01-23 15:21:15 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:21:15 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:21:15 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260901234(String) 
+2018-01-23 15:21:15 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:21:15 [http-nio-8080-exec-3] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ ==>  Preparing: insert into user (user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto) values (?, ?, ?, ?, ?, ?, ?, ?, ?)  
+2018-01-23 15:21:15 [http-nio-8080-exec-3] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ ==> Parameters: null, 13260901234(String), 刘运星(String), null, null, null, null, 8693a0881a7d30f96e385dc96937fa05(String), 这个人很懒，什么都没有留下(String) 
+2018-01-23 15:21:15 [http-nio-8080-exec-3] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ <==    Updates: 1 
+2018-01-23 15:21:58 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on star-PC with PID 13382 (/home/star/IdeaProjects/imhi/target/classes started by star in /home/star/IdeaProjects/imhi) 
+2018-01-23 15:21:58 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-23 15:21:58 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-23 15:22:03 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Started ImhiApplication in 5.832 seconds (JVM running for 6.985) 
+2018-01-23 15:23:17 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:23:17 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260902222(String) 
+2018-01-23 15:23:17 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:23:39 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:23:39 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260902222(String) 
+2018-01-23 15:23:39 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:23:39 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:23:39 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260902222(String) 
+2018-01-23 15:23:39 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:23:39 [http-nio-8080-exec-2] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ ==>  Preparing: insert into user (user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto) values (?, ?, ?, ?, ?, ?, ?, ?, ?)  
+2018-01-23 15:23:39 [http-nio-8080-exec-2] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ ==> Parameters: null, 13260902222(String), 刘运星(String), null, null, null, null, 8693a0881a7d30f96e385dc96937fa05(String), 这个人很懒，什么都没有留下(String) 
+2018-01-23 15:23:39 [http-nio-8080-exec-2] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ <==    Updates: 1 
+2018-01-23 15:26:25 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on star-PC with PID 13741 (/home/star/IdeaProjects/imhi/target/classes started by star in /home/star/IdeaProjects/imhi) 
+2018-01-23 15:26:25 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-23 15:26:25 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-23 15:26:31 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Started ImhiApplication in 6.658 seconds (JVM running for 7.678) 
+2018-01-23 15:26:37 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:26:37 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260902222(String) 
+2018-01-23 15:26:37 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:26:43 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:26:43 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260902222(String) 
+2018-01-23 15:26:43 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:26:43 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:26:43 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260902222(String) 
+2018-01-23 15:26:43 [http-nio-8080-exec-2] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:26:43 [http-nio-8080-exec-2] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ ==>  Preparing: insert into user (user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto) values (?, ?, ?, ?, ?, ?, ?, ?, ?)  
+2018-01-23 15:26:43 [http-nio-8080-exec-2] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ ==> Parameters: null, 13260902222(String), 刘运星(String), null, null, null, null, 8693a0881a7d30f96e385dc96937fa05(String), 这个人很懒，什么都没有留下(String) 
+2018-01-23 15:26:43 [http-nio-8080-exec-2] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ <==    Updates: 1 
+2018-01-23 15:27:33 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Starting ImhiApplication on star-PC with PID 13878 (/home/star/IdeaProjects/imhi/target/classes started by star in /home/star/IdeaProjects/imhi) 
+2018-01-23 15:27:33 [restartedMain] DEBUG com.jit.imhi.ImhiApplication : 
+ Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE 
+2018-01-23 15:27:33 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ No active profile set, falling back to default profiles: default 
+2018-01-23 15:27:39 [restartedMain] INFO  com.jit.imhi.ImhiApplication : 
+ Started ImhiApplication in 7.42 seconds (JVM running for 8.576) 
+2018-01-23 15:28:27 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:28:27 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260902222(String) 
+2018-01-23 15:28:27 [http-nio-8080-exec-1] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-23 15:29:58 [http-nio-8080-exec-4] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:29:58 [http-nio-8080-exec-4] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260904321(String) 
+2018-01-23 15:29:58 [http-nio-8080-exec-4] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:30:24 [http-nio-8080-exec-5] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:30:24 [http-nio-8080-exec-5] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260904321(String) 
+2018-01-23 15:30:24 [http-nio-8080-exec-5] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:30:24 [http-nio-8080-exec-5] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:30:25 [http-nio-8080-exec-5] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260904321(String) 
+2018-01-23 15:30:25 [http-nio-8080-exec-5] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:30:25 [http-nio-8080-exec-5] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ ==>  Preparing: insert into user (user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto) values (?, ?, ?, ?, ?, ?, ?, ?, ?)  
+2018-01-23 15:30:25 [http-nio-8080-exec-5] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ ==> Parameters: null, 13260904321(String), 刘运星:)(String), null, null, null, null, 8693a0881a7d30f96e385dc96937fa05(String), 这个人很懒，什么都没有留下(String) 
+2018-01-23 15:30:25 [http-nio-8080-exec-5] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ <==    Updates: 1 
+2018-01-23 15:34:03 [http-nio-8080-exec-7] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:34:03 [http-nio-8080-exec-7] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260601111(String) 
+2018-01-23 15:34:03 [http-nio-8080-exec-7] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:34:26 [http-nio-8080-exec-8] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:34:26 [http-nio-8080-exec-8] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260601111(String) 
+2018-01-23 15:34:26 [http-nio-8080-exec-8] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:34:26 [http-nio-8080-exec-8] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:34:26 [http-nio-8080-exec-8] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260601111(String) 
+2018-01-23 15:34:26 [http-nio-8080-exec-8] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 0 
+2018-01-23 15:34:26 [http-nio-8080-exec-8] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ ==>  Preparing: insert into user (user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto) values (?, ?, ?, ?, ?, ?, ?, ?, ?)  
+2018-01-23 15:34:26 [http-nio-8080-exec-8] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ ==> Parameters: null, 13260601111(String), 刘运星(String), null, null, null, null, 8693a0881a7d30f96e385dc96937fa05(String), 这个人很懒，什么都没有留下(String) 
+2018-01-23 15:34:26 [http-nio-8080-exec-8] DEBUG c.jit.imhi.mapper.UserMapper.insert : 
+ <==    Updates: 1 
+2018-01-23 15:34:52 [http-nio-8080-exec-10] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:34:52 [http-nio-8080-exec-10] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260901111(String) 
+2018-01-23 15:34:52 [http-nio-8080-exec-10] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-23 15:35:13 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:35:13 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260901111(String) 
+2018-01-23 15:35:13 [http-nio-8080-exec-3] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-23 15:35:13 [http-nio-8080-exec-3] DEBUG c.j.i.m.U.updateByPrimaryKey : 
+ ==>  Preparing: update user set phone_num = ?, nikname = ?, head_url = ?, age = ?, gender = ?, birth = ?, user_password = ?, motto = ? where user_id = ?  
+2018-01-23 15:35:13 [http-nio-8080-exec-3] DEBUG c.j.i.m.U.updateByPrimaryKey : 
+ ==> Parameters: 13260901111(String), liuyunxing(String), D:\testFile\IMHI\upLoadImage\13260901111\132609011111516670960942.jpg(String), null, null, 2018-01-03(Date), 8693a0881a7d30f96e385dc96937fa05(String), 这个人很懒，什么都没有留下(String), 10022(Integer) 
+2018-01-23 15:35:13 [http-nio-8080-exec-3] DEBUG c.j.i.m.U.updateByPrimaryKey : 
+ <==    Updates: 1 
+2018-01-23 15:37:48 [http-nio-8080-exec-5] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:37:48 [http-nio-8080-exec-5] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260901111(String) 
+2018-01-23 15:37:48 [http-nio-8080-exec-5] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-23 15:38:20 [http-nio-8080-exec-6] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==>  Preparing: select user_id, phone_num, nikname, head_url, age, gender, birth, user_password, motto from user where phone_num = ?  
+2018-01-23 15:38:20 [http-nio-8080-exec-6] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ ==> Parameters: 13260901111(String) 
+2018-01-23 15:38:20 [http-nio-8080-exec-6] DEBUG c.j.i.m.UserMapper.selectByPhoneNum : 
+ <==      Total: 1 
+2018-01-23 15:38:20 [http-nio-8080-exec-6] DEBUG c.j.i.m.U.updateByPrimaryKey : 
+ ==>  Preparing: update user set phone_num = ?, nikname = ?, head_url = ?, age = ?, gender = ?, birth = ?, user_password = ?, motto = ? where user_id = ?  
+2018-01-23 15:38:20 [http-nio-8080-exec-6] DEBUG c.j.i.m.U.updateByPrimaryKey : 
+ ==> Parameters: 13260901111(String), liuyunxing(String), D:\testFile\IMHI\upLoadImage\13260901111\132609011111516670960942.jpg(String), null, null, 2018-01-03(Date), 8693a0881a7d30f96e385dc96937fa05(String), 这个人很懒，什么都没有留下(String), 10022(Integer) 
+2018-01-23 15:38:20 [http-nio-8080-exec-6] DEBUG c.j.i.m.U.updateByPrimaryKey : 
+ <==    Updates: 1 
