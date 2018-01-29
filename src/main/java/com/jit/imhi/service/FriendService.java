@@ -24,4 +24,10 @@ public class FriendService {
         list = friendMapper.selectByUserId(userId);
         return list;
     }
+
+    public int delFriend(Integer userId, Integer friendId) {
+        int num = friendMapper.deleteByPrimaryKey(userId, friendId);
+
+        return num;
+    }
 }
