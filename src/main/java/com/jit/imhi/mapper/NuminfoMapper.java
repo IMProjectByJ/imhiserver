@@ -58,4 +58,8 @@ public interface NuminfoMapper {
     String selectNumOne(Numinfo record);
 
     String selectNumTwo(Numinfo record);
+
+    Numinfo selectGroupInfo(@Param("userId") Integer userId, @Param("friendType") String friendType);
+
+    int updateGroupOld(Numinfo record);
 }

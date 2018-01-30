@@ -28,7 +28,9 @@ public class FileOperateService {
     FileOperateService(HistoryMessageMapper historyMessageMapper){
         this.historyMessageMapper = historyMessageMapper;
         //ROOTPath = getClass().getResource("/").getFile().toString();// 获得本地地址
-        ROOTPath = "/home/star/testFile/IMHI";
+        //ROOTPath = "/home/star/testFile/IMHI";
+        ROOTPath = "C:/home/star/testFile/IMHI";
+
     }
     // 文件消息类型为3
     public  int  insertFileToHistoryMessage(HistoryMessage historyMessage){

@@ -37,11 +37,27 @@ public class NumToSave {
             i = numinfoMapper.insert(numinfo);
             System.out.println("输入离线信息数量+" + i);
         }
-
-
         sqlSession.commit();
         sqlSession.close();
     }
+
+    public static void offGroupToSave(Numinfo numinfo) {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        NuminfoMapper numinfoMapper = sqlSession.getMapper(NuminfoMapper.class);
+        Numinfo numinfo1 = numinfoMapper.selectByPrimaryKey(numinfo.getUserId(), numinfo.getFriendId(),numinfo.getFriendType());
+        int i = 0;
+        if (numinfo1 != null) {
+            numinfoMapper.updateGroupOld(numinfo);
+            System.out.println("替换离线信息数量");
+        } else {
+            i = numinfoMapper.insert(numinfo);
+            System.out.println("输入离线信息数量+" + i);
+        }
+        sqlSession.commit();
+        sqlSession.close();
+    }
+
+
 
     public static void allInfoSave(Numinfo numinfo) {
         SqlSession sqlSession = sqlSessionFactory.openSession();

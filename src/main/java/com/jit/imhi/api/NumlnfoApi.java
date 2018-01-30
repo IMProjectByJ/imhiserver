@@ -107,4 +107,31 @@ public class NumlnfoApi {
     return  list;
     }
 
+    @GetMapping("selectgroup/{json}")
+    public Object  SelectGroupNum(@PathVariable String json) {
+        String new_id ;
+        int num = 0;
+        System.out.println("接收到了新的jsonObect"+json.toString());
+
+        JSONObject jsonObject1 = JSON.parseObject(json);
+        JSONObject jsonObject =new  JSONObject();
+        List<HistoryMessage> list = new ArrayList<>();
+        Numinfo numinfo = new Numinfo();
+        numinfo.setNewId(jsonObject1.getInteger("new_id"));
+        numinfo.setFriendType(jsonObject1.getString("friend_type"));
+        numinfo.setOldId(jsonObject1.getInteger("old_id"));
+        numinfo.setUserId(jsonObject1.getInteger("user_id"));
+        numinfo.setFriendId(jsonObject1.getInteger("friend_id"));
+        String friendType =  numinfo.getFriendType();
+          if(friendType.equals("2")){
+            new_id = numInfoService.SelectNumOne(numinfo);
+            numinfo.setFriendType("3");
+            numinfo.setUserId(jsonObject1.getInteger("friend_id"));
+            numinfo.setNewId(Integer.valueOf(new_id));
+            list = historyMessageService.selectNotic(numinfo);
+        }
+        return  list;
+    }
+
+
 }

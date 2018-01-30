@@ -150,4 +150,5 @@
         order by  message_id DESC
         limit 10
     </select>
+
 </mapper>

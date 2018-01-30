@@ -45,9 +45,17 @@ public class NumToHave {
 
         }
         for(int i = 0;i<grouplist.size();i++){
-            numinfo = numinfoMapper.selectAllBy(userid,Integer.valueOf(grouplist.get(i)),"2");
-            if(numinfo != null)
-            list.add(numinfo);
+            //numinfo = numinfoMapper.selectGroupInfo(Integer.valueOf(grouplist.get(i)),"2");
+//          System.out.println(  numinfoMapper.selectGroupInfo(Integer.valueOf(grouplist.get(i)),"2").getUserId());
+//            System.out.println(  numinfoMapper.selectGroupInfo(Integer.valueOf(grouplist.get(i)),"2").getNewId());
+//            System.out.println(  numinfoMapper.selectGroupInfo(Integer.valueOf(grouplist.get(i)),"2").getFriendType());
+           Numinfo numinfo1 = numinfoMapper.selectAllBy(userid,Integer.valueOf(grouplist.get(i)),"2");
+
+            System.out.println("grouplist.size:"+i);
+            if(numinfo1 != null)
+            list.add(numinfo1);
+            else
+                System.out.println("grouplist numinfo1 is null");
         }
         /*
         for(int i = 0;i<groupowner.size();i++){

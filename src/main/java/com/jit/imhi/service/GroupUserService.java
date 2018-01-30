@@ -24,4 +24,7 @@ public class GroupUserService {
 
        return groupuserMapper.selectUsers(groupId);
     }
+    public List<User> getUsers(Integer groupId){
+        return  groupuserMapper.selectUsers(groupId);
+    }
 }

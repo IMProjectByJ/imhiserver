@@ -2,12 +2,11 @@ package com.jit.imhi.socket;
 
 
 import com.jit.imhi.api.LogininfoApi;
+import com.jit.imhi.mapper.GroupuserMapper;
 import com.jit.imhi.mapper.NuminfoMapper;
 import com.jit.imhi.mapper.UserMapper;
 import com.jit.imhi.model.*;
-import com.jit.imhi.service.GroupOperateService;
-import com.jit.imhi.service.LogininfoService;
-import com.jit.imhi.service.UserService;
+import com.jit.imhi.service.*;
 import com.jit.imhi.socket.Save.NumToHave;
 import com.jit.imhi.socket.Save.NumToSave;
 import com.jit.imhi.socket.Save.SaveMessage;
@@ -38,6 +37,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RestController;
+import sun.security.acl.GroupImpl;
 
 
 public class MyIoHandler extends IoHandlerAdapter {
@@ -119,17 +119,29 @@ public class MyIoHandler extends IoHandlerAdapter {
                     List<Numinfo> list = new ArrayList<>();
                     list = NumToHave.HaveOffNum(user_id);
                     System.out.println("type6:" + list.size());
+                    String key1 = "";
                     for (int i = 0; i < list.size(); i++) {
                         Numinfo numinfo1 = list.get(i);
+                        System.out.println("numinfo1 zhi:"+numinfo1.getFriendId());
+                        System.out.println("numinfo1 zhi:"+numinfo1.getFriendType());
                         if (numinfo1 != null) {
+                            if(numinfo1.getFriendType().equals("1")) {
+                                key1 = String.valueOf(list.get(i).getFriendId()) + "|"
+                                        + list.get(i).getFriendType();
+                            }
+                            else if(numinfo1.getFriendType().equals("2")){
+                                key1 = String.valueOf(list.get(i).getFriendId()) + "|"
+                                        + list.get(i).getFriendType();
 
-                            String key = String.valueOf(list.get(i).getFriendId()) + "|"
-                                    + list.get(i).getFriendType();
+                            }  else if(numinfo1.getFriendType().equals("3")){
+                                key1 = "9999|"+ list.get(i).getFriendType();
 
-                            numinfo.put(key, numinfo1);
+                            }
+
+                            numinfo.put(key1, numinfo1);
                             System.out.println("numinfo1:" + numinfo1.getUserId());
                             System.out.println("numinfo1:" + numinfo1.getNewId());
-                            System.out.println("numinfo1:" + key);
+                            System.out.println("numinfo1:" + key1);
                             //    NumInfoMap.mapNuminfo.get(user_id).put(key, numinfo1);
 
                         }
@@ -185,10 +197,7 @@ public class MyIoHandler extends IoHandlerAdapter {
                         String updatedate = DateToMySQLDateTimeString(historyMessage.getDate());
                         JSONObject json1 = JSONObject.fromObject(historyMessage);
                         json1.put("date", updatedate);
-
                         System.out.println(json1.toString());
-
-
                         json.put("message_type", "8");
                         json.put("textcontent", json1);
 
@@ -288,7 +297,6 @@ public class MyIoHandler extends IoHandlerAdapter {
                     break;
 
                 case "2":
-                case "3":
                 case "11":
                     from_id = js.getString("from");
                     IoSession sendaddfriend = null;
@@ -317,7 +325,7 @@ public class MyIoHandler extends IoHandlerAdapter {
                     numinfo2.setUserId(Integer.valueOf(to1));
                     //
                     //
-                    if(message_type.equals("11")){
+                    if (message_type.equals("11")) {
                         numinfo2.setFriendId(9999);
                     } else {
                         numinfo2.setFriendId(Integer.valueOf(js.getString("from")));
@@ -373,7 +381,6 @@ public class MyIoHandler extends IoHandlerAdapter {
                         friendtype = "3";
                     }
                     key = to + "|" + friendtype;
-                    NumInfoMap.ceshi();
                     Numinfo numinfo3 = NumInfoMap.mapNuminfo.get(user_id).get(key);
 
                     //  System.out.println("type13:"+numinfo.get(user_id).getNewId());
@@ -389,8 +396,12 @@ public class MyIoHandler extends IoHandlerAdapter {
                     //其实是需要最新的id(本地)
                     //  String old_id = js.getString("textcontent");
                     // numinfo3.setOldId(Integer.valueOf(old_id));
-                    numinfo3.setOldId(Integer.valueOf(numinfo3.getNewId()));
-                    System.out.println("type13:" + numinfo3.getOldId());
+                    if(numinfo3 != null)
+                    if (numinfo3.getNewId() != null)
+                        numinfo3.setOldId(Integer.valueOf(numinfo3.getNewId()));
+                    else
+                        numinfo3.setOldId(0);
+                //    System.out.println("type13:" + numinfo3.getOldId());
                     NumInfoMap.mapNuminfo.get(user_id).put(key, numinfo3);
                     break;
                 case "14":
@@ -408,6 +419,64 @@ public class MyIoHandler extends IoHandlerAdapter {
                     groupuser.setGroupMembership("2");
                     groupuser.setMemberId(Integer.valueOf(to_id));
                     getGroupOperateService().insertGroupuser(groupuser);
+                    break;
+                case "3":
+                    String fromid3 = js.getString("from");
+
+                    String to3 = js.getString("to");
+                    saveMessage = new SaveMessage();
+                    historyMessage = saveMessage.InsertMessage(js);
+                    int new_id3 = historyMessage.getMessageId();
+                    System.out.println(new_id3);
+                    js.put("message_id", new_id3);
+                     IoSession sendaddfriend3 = null;
+                    //准备动作，存入numinfo方式，map，还是数据库
+                    // System.out.println(mapNuminfo.get(to));
+                    Numinfo numinfo = new Numinfo();
+                    numinfo.setFriendType("2");
+                    numinfo.setNewId(new_id3);
+                    numinfo.setUserId(Integer.valueOf(fromid3));
+                    numinfo.setFriendId(Integer.valueOf(to3));
+                    //离线存储
+                    System.out.println("数据存入numinfo");
+
+                    List<User> list3 = getGroupUser().getUsers(Integer.valueOf(to3));
+
+                    for (int i = 0; i < list3.size(); i++) {
+                        System.out.println("send ioseesion"+list3.get(i).getUserId() );
+                        sendaddfriend3 = map.get(String.valueOf(list3.get(i).getUserId()));
+
+//                        Iterator<Map.Entry<String, IoSession>> entries = map.entrySet().iterator();
+//                        while (entries.hasNext())
+//                        {
+//                            Map.Entry<String, IoSession> entry = entries.next();
+//                            System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
+//                        }
+
+
+                        JSONObject jsonObject3 = new JSONObject();
+                        Date date3 = historyMessage.getDate();
+                        JSONObject js3= JSONObject.fromObject(historyMessage);
+                        js3.put("date", DateToMySQLDateTimeString(date3));
+                      //  js3.put("from",to3);
+                       // js3.put("to",list3.get(i).getUserId());
+                        jsonObject3.put("message_type", "3");
+                        jsonObject3.put("textcontent", js3);
+                        if (sendaddfriend3 != null) {
+                            System.out.println("sendaddfriend不为空:"+list3.get(i).getUserId()
+                            );
+
+                            String key3 = to3+"|2";
+                            NumInfoMap.mapNuminfo.get(String.valueOf(list3.get(i).getUserId())).put(key3,numinfo);
+                            if(list3.get(i).getUserId().equals(fromid3))
+                                continue;
+                            sendaddfriend3.write(jsonObject3);
+                        } else {
+                            System.out.println("sendaddfriend为空"+list3.get(i).getUserId());
+                            numinfo.setUserId(list3.get(i).getUserId());
+                            NumToSave.offGroupToSave(numinfo);
+                        }
+                    }
                     break;
             }
 
@@ -524,5 +593,13 @@ public class MyIoHandler extends IoHandlerAdapter {
 
     public GroupOperateService getGroupOperateService() {
         return applicationContext.getBean(GroupOperateService.class);
+    }
+
+    public NumInfoService getNumInfoService() {
+        return applicationContext.getBean(NumInfoService.class);
+    }
+
+    public GroupUserService getGroupUser() {
+        return applicationContext.getBean(GroupUserService.class);
     }
 }

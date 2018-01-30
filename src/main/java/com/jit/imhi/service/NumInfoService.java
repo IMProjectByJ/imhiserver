@@ -29,7 +29,10 @@ public class NumInfoService {
     public String SelectNumTwo(Numinfo numinfo){
         return  numinfoMapper.selectNumTwo(numinfo);
     }
+
     public int delNumInfo(Integer userId,  Integer friendId,  String friendType) {
         return numinfoMapper.deleteByPrimaryKey(userId, friendId, friendType);
     }
+
+
 }
