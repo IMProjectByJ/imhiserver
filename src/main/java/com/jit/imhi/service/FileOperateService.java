@@ -59,7 +59,10 @@ public class FileOperateService {
         // 将文件保存到本地
         System.out.println(getClass().getResource("/").getFile().toString());
         // ---------- for test above
+
+
         String fileName = file.getOriginalFilename();// 获得上传文件的名称
+        System.out.println("filename-p------"+fileName);
         String  suffix= fileName.substring(fileName.lastIndexOf("."));
         String nameWithoutSuffix = fileName.replaceAll(suffix,"");
         System.out.println("上传文件名称为"+fileName);

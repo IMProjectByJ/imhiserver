@@ -48,7 +48,7 @@ public class FileOperateApi {
             @CurrentUser参数可以获得请求用户的个人信息
      */
     public JSONObject upLoadFile(@CurrentUser User user, @RequestParam("file")MultipartFile file,
-                                 @RequestParam("toId") Integer toId, @RequestParam("messageTpye") Integer messageType) {
+                                 @RequestParam("toId") Integer toId, @RequestParam("messageType") Integer messageType) {
 
         JSONObject jsonObject = new JSONObject();// jsonObject中包含信息://文件在数据库中的存储位置 // 上传状态
         // 将数据存放在本地

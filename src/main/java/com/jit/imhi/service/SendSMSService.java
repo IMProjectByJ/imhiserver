@@ -114,9 +114,7 @@ public class SendSMSService {
 
     public JSONObject sendMsm(String phoneNum, String RandomCode, int type) {
 
-        System.out.println("----------------------send-------------------------------");
         System.out.println("----------------------send-------------------------------" + phoneNum);
-        System.out.println("----------------------send-------------------------------");
         JSONObject jsonObject = new JSONObject();
         SendSmsResponse response = null;
         try {

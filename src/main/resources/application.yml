@@ -5,8 +5,9 @@ spring:
     password: imdb
   http:
     multipart:
-      max-file-size: 20480Mb
-      max-request-size: 20480Mb
+      enabled: true
+      max-file-size: 204800Mb
+      max-request-size: 204800Mb
 debug: true
 mybatis:
   type-aliases-package: com.jit.imhi.model
