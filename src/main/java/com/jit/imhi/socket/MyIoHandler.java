@@ -340,7 +340,8 @@ public class MyIoHandler extends IoHandlerAdapter {
 
                     jsonObject1.put("textcontent", js1);
                     if (sendaddfriend != null) {
-                        System.out.println("sendaddfriend不为空");
+                        System.out.println("sendaddfriend不为空" +
+                                "");
                         //  JSONObject json = JSONObject.fromObject(message);
 
                         if (chating.get(to1) != null && chating.get(to1).equals(user_id)) {

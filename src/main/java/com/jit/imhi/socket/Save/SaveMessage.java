@@ -49,9 +49,9 @@ public class SaveMessage {
             to = Integer.valueOf(json.optString("to"));
         }
         info.setToId(to);
-        if (json.has("texttype")){
+        if (json.has("text_type")){
             // json.put("to", 1);
-            info.setTextType(Integer.valueOf(json.optString("texttype")));
+            info.setTextType(Integer.valueOf(json.optString("text_type")));
 
         }
         if (json.has("textcontent")){
