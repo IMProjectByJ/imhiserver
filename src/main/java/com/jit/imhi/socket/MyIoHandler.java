@@ -122,19 +122,18 @@ public class MyIoHandler extends IoHandlerAdapter {
                     String key1 = "";
                     for (int i = 0; i < list.size(); i++) {
                         Numinfo numinfo1 = list.get(i);
-                        System.out.println("numinfo1 zhi:"+numinfo1.getFriendId());
-                        System.out.println("numinfo1 zhi:"+numinfo1.getFriendType());
+                        System.out.println("numinfo1 zhi:" + numinfo1.getFriendId());
+                        System.out.println("numinfo1 zhi:" + numinfo1.getFriendType());
                         if (numinfo1 != null) {
-                            if(numinfo1.getFriendType().equals("1")) {
+                            if (numinfo1.getFriendType().equals("1")) {
                                 key1 = String.valueOf(list.get(i).getFriendId()) + "|"
                                         + list.get(i).getFriendType();
-                            }
-                            else if(numinfo1.getFriendType().equals("2")){
+                            } else if (numinfo1.getFriendType().equals("2")) {
                                 key1 = String.valueOf(list.get(i).getFriendId()) + "|"
                                         + list.get(i).getFriendType();
 
-                            }  else if(numinfo1.getFriendType().equals("3")){
-                                key1 = "9999|"+ list.get(i).getFriendType();
+                            } else if (numinfo1.getFriendType().equals("3")) {
+                                key1 = "9999|" + list.get(i).getFriendType();
 
                             }
 
@@ -301,65 +300,102 @@ public class MyIoHandler extends IoHandlerAdapter {
                     from_id = js.getString("from");
                     IoSession sendaddfriend = null;
                     String to1 = js.getString("to");
-                    saveMessage = new SaveMessage();
-                    historyMessage = saveMessage.InsertMessage(js);
-                    new_id = historyMessage.getMessageId();
-                    System.out.println(new_id);
-                    js.put("message_id", new_id);
-                    sendaddfriend = null;
-                    //准备动作，存入numinfo方式，map，还是数据库
-                    // System.out.println(mapNuminfo.get(to));
-                    Numinfo numinfo2 = new Numinfo();
-                    if (message_type.equals("11")) {
-                        //取出群主的ID,准备发送消息
-
-                        Type_Eleven type_eleven = new Type_Eleven();
-                        String group_owner = type_eleven.FindGroupOwner(Integer.valueOf(to1));
-                        System.out.println("the group " + to1 + " owner :" + group_owner);
-                        to1 = group_owner;
-                        numinfo2.setFriendType("3");
-                    } else {
+                    String texttype = js.getString("text_type");
+                    System.out.println("texttype = " + texttype);
+                    if (texttype.equals("2") || texttype.equals("3")) {
+                        Numinfo numinfo2 = new Numinfo();
                         numinfo2.setFriendType("1");
-                    }
-                    numinfo2.setNewId(new_id);
-                    numinfo2.setUserId(Integer.valueOf(to1));
-                    //
-                    //
-                    if (message_type.equals("11")) {
-                        numinfo2.setFriendId(9999);
-                    } else {
+                        numinfo2.setNewId(js.getInt("message_id"));
+                        numinfo2.setUserId(Integer.valueOf(to1));
                         numinfo2.setFriendId(Integer.valueOf(js.getString("from")));
-                    }
+                        JSONObject jsonObject1 = new JSONObject();
+                        sendaddfriend = map.get(to1);
+                        jsonObject1.put("message_type", js.getString("message_type"));
+                        jsonObject1.put("textcontent", js);
+                        if (sendaddfriend != null) {
+                            System.out.println("sendaddfriend不为空" +
+                                    "");
+                            //  JSONObject json = JSONObject.fromObject(message);
 
-                    sendaddfriend = map.get(to1);
-                    JSONObject jsonObject1 = new JSONObject();
-                    Date date2 = historyMessage.getDate();
-                    JSONObject js1 = JSONObject.fromObject(historyMessage);
-                    js1.put("date", DateToMySQLDateTimeString(date2));
-                    jsonObject1.put("message_type", "2");
+                            if (chating.get(to1) != null && chating.get(to1).equals(user_id)) {
+                                numinfo2.setOldId(js.getInt("message_id"));
 
-                    jsonObject1.put("textcontent", js1);
-                    if (sendaddfriend != null) {
-                        System.out.println("sendaddfriend不为空" +
-                                "");
-                        //  JSONObject json = JSONObject.fromObject(message);
+                                NumInfoMap.mapNuminfo.get(to1).put(from_id + "|1", numinfo2);
+                            } else {
+                                System.out.println(to1);
+                                NumInfoMap.mapNuminfo.get(to1).put(from_id + "|1", numinfo2);
+                            }
+                            sendaddfriend.write(jsonObject1);
 
-                        if (chating.get(to1) != null && chating.get(to1).equals(user_id)) {
-                            numinfo2.setOldId(new_id);
-
-                            NumInfoMap.mapNuminfo.get(to1).put(from_id + "|1", numinfo2);
                         } else {
-                            System.out.println(to1);
-                            NumInfoMap.mapNuminfo.get(to1).put(from_id + "|1", numinfo2);
+                            //离线存储
+                            System.out.println("sendaddfriend为空");
+                            NumToSave.offToSave(numinfo2);
+                            //Type_Eight type_eight = new Type_Eight();
+                            //  type_eight.InsertOfflineSmg(js);
                         }
-                        sendaddfriend.write(jsonObject1);
 
                     } else {
-                        //离线存储
-                        System.out.println("sendaddfriend为空");
-                        NumToSave.offToSave(numinfo2);
-                        //Type_Eight type_eight = new Type_Eight();
-                        //  type_eight.InsertOfflineSmg(js);
+                        saveMessage = new SaveMessage();
+                        historyMessage = saveMessage.InsertMessage(js);
+                        new_id = historyMessage.getMessageId();
+                        System.out.println(new_id);
+                        js.put("message_id", new_id);
+
+                        sendaddfriend = null;
+                        //准备动作，存入numinfo方式，map，还是数据库
+                        // System.out.println(mapNuminfo.get(to));
+                        Numinfo numinfo2 = new Numinfo();
+                        if (message_type.equals("11")) {
+                            //取出群主的ID,准备发送消息
+
+                            Type_Eleven type_eleven = new Type_Eleven();
+                            String group_owner = type_eleven.FindGroupOwner(Integer.valueOf(to1));
+                            System.out.println("the group " + to1 + " owner :" + group_owner);
+                            to1 = group_owner;
+                            numinfo2.setFriendType("3");
+                        } else {
+                            numinfo2.setFriendType("1");
+                        }
+                        numinfo2.setNewId(new_id);
+                        numinfo2.setUserId(Integer.valueOf(to1));
+                        //
+                        //
+                        if (message_type.equals("11")) {
+                            numinfo2.setFriendId(9999);
+                        } else {
+                            numinfo2.setFriendId(Integer.valueOf(js.getString("from")));
+                        }
+
+                        sendaddfriend = map.get(to1);
+                        JSONObject jsonObject1 = new JSONObject();
+                        Date date2 = historyMessage.getDate();
+                        JSONObject js1 = JSONObject.fromObject(historyMessage);
+                        js1.put("date", DateToMySQLDateTimeString(date2));
+                        jsonObject1.put("message_type", "2");
+
+                        jsonObject1.put("textcontent", js1);
+                        if (sendaddfriend != null) {
+                            System.out.println("sendaddfriend不为空" +
+                                    "");
+                            //  JSONObject json = JSONObject.fromObject(message);
+
+                            if (chating.get(to1) != null && chating.get(to1).equals(user_id)) {
+                                numinfo2.setOldId(new_id);
+
+                                NumInfoMap.mapNuminfo.get(to1).put(from_id + "|1", numinfo2);
+                            } else {
+                                System.out.println(to1);
+                                NumInfoMap.mapNuminfo.get(to1).put(from_id + "|1", numinfo2);
+                            }
+                            sendaddfriend.write(jsonObject1);
+                        } else {
+                            //离线存储
+                            System.out.println("sendaddfriend为空");
+                            NumToSave.offToSave(numinfo2);
+                            //Type_Eight type_eight = new Type_Eight();
+                            //  type_eight.InsertOfflineSmg(js);
+                        }
                     }
                     break;
 
@@ -397,12 +433,12 @@ public class MyIoHandler extends IoHandlerAdapter {
                     //其实是需要最新的id(本地)
                     //  String old_id = js.getString("textcontent");
                     // numinfo3.setOldId(Integer.valueOf(old_id));
-                    if(numinfo3 != null)
-                    if (numinfo3.getNewId() != null)
-                        numinfo3.setOldId(Integer.valueOf(numinfo3.getNewId()));
-                    else
-                        numinfo3.setOldId(0);
-                //    System.out.println("type13:" + numinfo3.getOldId());
+                    if (numinfo3 != null)
+                        if (numinfo3.getNewId() != null)
+                            numinfo3.setOldId(Integer.valueOf(numinfo3.getNewId()));
+                        else
+                            numinfo3.setOldId(0);
+                    //    System.out.println("type13:" + numinfo3.getOldId());
                     NumInfoMap.mapNuminfo.get(user_id).put(key, numinfo3);
                     break;
                 case "14":
@@ -423,59 +459,96 @@ public class MyIoHandler extends IoHandlerAdapter {
                     break;
                 case "3":
                     String fromid3 = js.getString("from");
-
                     String to3 = js.getString("to");
-                    saveMessage = new SaveMessage();
-                    historyMessage = saveMessage.InsertMessage(js);
-                    int new_id3 = historyMessage.getMessageId();
-                    System.out.println(new_id3);
-                    js.put("message_id", new_id3);
-                     IoSession sendaddfriend3 = null;
-                    //准备动作，存入numinfo方式，map，还是数据库
-                    // System.out.println(mapNuminfo.get(to));
-                    Numinfo numinfo = new Numinfo();
-                    numinfo.setFriendType("2");
-                    numinfo.setNewId(new_id3);
-                    numinfo.setUserId(Integer.valueOf(fromid3));
-                    numinfo.setFriendId(Integer.valueOf(to3));
-                    //离线存储
-                    System.out.println("数据存入numinfo");
+                    String texttype3 = js.getString("text_type");
+                    System.out.println("texttype = " + texttype3);
+                    if (texttype3.equals("2") || texttype3.equals("3")) {
+                        int new_id3 = js.getInt("message_id");
+                        System.out.println(new_id3);
+                        IoSession sendaddfriend3 = null;
+                        Numinfo numinfo = new Numinfo();
+                        numinfo.setFriendType("2");
+                        numinfo.setNewId(new_id3);
+                        numinfo.setUserId(Integer.valueOf(fromid3));
+                        numinfo.setFriendId(Integer.valueOf(to3));
+                        //离线存储
+                        System.out.println("数据存入numinfo");
+                        List<User> list3 = getGroupUser().getUsers(Integer.valueOf(to3));
 
-                    List<User> list3 = getGroupUser().getUsers(Integer.valueOf(to3));
+                        for (int i = 0; i < list3.size(); i++) {
+                            System.out.println("send ioseesion" + list3.get(i).getUserId());
+                            sendaddfriend3 = map.get(String.valueOf(list3.get(i).getUserId()));
+                            JSONObject jsonObject3 = new JSONObject();
+                            //  js3.put("from",to3);
+                            // js3.put("to",list3.get(i).getUserId());
+                            jsonObject3.put("message_type", "3");
+                            jsonObject3.put("textcontent", js);
+                            if (sendaddfriend3 != null) {
+                                System.out.println("sendaddfriend不为空:" + list3.get(i).getUserId()
+                                );
 
-                    for (int i = 0; i < list3.size(); i++) {
-                        System.out.println("send ioseesion"+list3.get(i).getUserId() );
-                        sendaddfriend3 = map.get(String.valueOf(list3.get(i).getUserId()));
+                                String key3 = to3 + "|2";
+                                NumInfoMap.mapNuminfo.get(String.valueOf(list3.get(i).getUserId())).put(key3, numinfo);
+                                System.out.println(list3.get(i).getUserId()+" "+fromid3+" ");
+                                if (fromid3.equals(String.valueOf(list3.get(i).getUserId())))
+                                {
+                                    System.out.println("相等的，跳过");
+                                    continue;
+                                }
+                                sendaddfriend3.write(jsonObject3);
+                            } else {
+                                System.out.println("sendaddfriend为空" + list3.get(i).getUserId());
+                                numinfo.setUserId(list3.get(i).getUserId());
+                                NumToSave.offGroupToSave(numinfo);
+                            }
+                        }
 
-//                        Iterator<Map.Entry<String, IoSession>> entries = map.entrySet().iterator();
-//                        while (entries.hasNext())
-//                        {
-//                            Map.Entry<String, IoSession> entry = entries.next();
-//                            System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
-//                        }
 
 
-                        JSONObject jsonObject3 = new JSONObject();
-                        Date date3 = historyMessage.getDate();
-                        JSONObject js3= JSONObject.fromObject(historyMessage);
-                        js3.put("date", DateToMySQLDateTimeString(date3));
-                      //  js3.put("from",to3);
-                       // js3.put("to",list3.get(i).getUserId());
-                        jsonObject3.put("message_type", "3");
-                        jsonObject3.put("textcontent", js3);
-                        if (sendaddfriend3 != null) {
-                            System.out.println("sendaddfriend不为空:"+list3.get(i).getUserId()
-                            );
+                    } else {
+                        saveMessage = new SaveMessage();
+                        historyMessage = saveMessage.InsertMessage(js);
+                        int new_id3 = historyMessage.getMessageId();
+                        System.out.println(new_id3);
+                        js.put("message_id", new_id3);
+                        IoSession sendaddfriend3 = null;
+                        //准备动作，存入numinfo方式，map，还是数据库
+                        // System.out.println(mapNuminfo.get(to));
+                        Numinfo numinfo = new Numinfo();
+                        numinfo.setFriendType("2");
+                        numinfo.setNewId(new_id3);
+                        numinfo.setUserId(Integer.valueOf(fromid3));
+                        numinfo.setFriendId(Integer.valueOf(to3));
+                        //离线存储
+                        System.out.println("数据存入numinfo");
 
-                            String key3 = to3+"|2";
-                            NumInfoMap.mapNuminfo.get(String.valueOf(list3.get(i).getUserId())).put(key3,numinfo);
-                            if(list3.get(i).getUserId().equals(fromid3))
-                                continue;
-                            sendaddfriend3.write(jsonObject3);
-                        } else {
-                            System.out.println("sendaddfriend为空"+list3.get(i).getUserId());
-                            numinfo.setUserId(list3.get(i).getUserId());
-                            NumToSave.offGroupToSave(numinfo);
+                        List<User> list3 = getGroupUser().getUsers(Integer.valueOf(to3));
+
+                        for (int i = 0; i < list3.size(); i++) {
+                            System.out.println("send ioseesion" + list3.get(i).getUserId());
+                            sendaddfriend3 = map.get(String.valueOf(list3.get(i).getUserId()));
+                            JSONObject jsonObject3 = new JSONObject();
+                            Date date3 = historyMessage.getDate();
+                            JSONObject js3 = JSONObject.fromObject(historyMessage);
+                            js3.put("date", DateToMySQLDateTimeString(date3));
+                            //  js3.put("from",to3);
+                            // js3.put("to",list3.get(i).getUserId());
+                            jsonObject3.put("message_type", "3");
+                            jsonObject3.put("textcontent", js3);
+                            if (sendaddfriend3 != null) {
+                                System.out.println("sendaddfriend不为空:" + list3.get(i).getUserId()
+                                );
+
+                                String key3 = to3 + "|2";
+                                NumInfoMap.mapNuminfo.get(String.valueOf(list3.get(i).getUserId())).put(key3, numinfo);
+                                if (fromid3.equals(String.valueOf(list3.get(i).getUserId())))
+                                    continue;
+                                sendaddfriend3.write(jsonObject3);
+                            } else {
+                                System.out.println("sendaddfriend为空" + list3.get(i).getUserId());
+                                numinfo.setUserId(list3.get(i).getUserId());
+                                NumToSave.offGroupToSave(numinfo);
+                            }
                         }
                     }
                     break;

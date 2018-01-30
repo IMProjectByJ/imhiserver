@@ -114,9 +114,7 @@ public class SendSMSService {
 
     public JSONObject sendMsm(String phoneNum, String RandomCode, int type) {
 
-        System.out.println("----------------------send-------------------------------");
         System.out.println("----------------------send-------------------------------" + phoneNum);
-        System.out.println("----------------------send-------------------------------");
         JSONObject jsonObject = new JSONObject();
         SendSmsResponse response = null;
         try {
@@ -125,11 +123,15 @@ public class SendSMSService {
             User user = userMapper.selectByPhoneNum(phoneNum);
             if ((user != null && (type == 2) )|| (user == null)&&(type == 1) ){ // 1表示注册账号
 
-/*                response = sendSms("" + phoneNum, RandomCode);
+                try {
+                    response = sendSms("" + phoneNum, RandomCode);
+                } catch (ClientException e) {
+
+                }
                 jsonObject.put("code", response.getCode());
                 jsonObject.put("message", response.getMessage());
                 jsonObject.put("RequestId",response.getRequestId());
-                jsonObject.put("BizId",response.getBizId());*/
+                jsonObject.put("BizId",response.getBizId());
                 jsonObject.put("code", "OK");
                 System.out.println("send code -------  "+RandomCode);
                 Thread.sleep(3000L);

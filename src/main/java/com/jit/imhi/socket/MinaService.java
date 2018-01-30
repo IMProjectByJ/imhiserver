@@ -34,7 +34,7 @@ public class MinaService {
                 new ProtocolCodecFilter(new TextLineCodecFactory(Charset
                         .forName("UTF-8"), LineDelimiter.WINDOWS.getValue(),
                         LineDelimiter.WINDOWS.getValue())));
-/*
+
         KeepAliveMessageFactory heartBeatFactory = new KeepAliveMessageFactoryImpl();
         KeepAliveFilter heartBeat = new KeepAliveFilter(heartBeatFactory,
                 IdleStatus.BOTH_IDLE);
@@ -42,7 +42,7 @@ public class MinaService {
         heartBeat.setRequestInterval(heartbeatrate);
         heartBeat.setRequestTimeout(heartbeatrate);
         acceptor.getFilterChain().addLast("heartbeat", heartBeat);
-*/
+
         acceptor.setHandler(new MyIoHandler());
 
         try {
@@ -59,27 +59,27 @@ public class MinaService {
 
         public Object getRequest(IoSession arg0) {
             // System.out.println(arg0.toString());
-            // System.out.println("请求预设信息"+HEARTBEATREQUEST );
-            // return HEARTBEATREQUEST ;
-            return null;
+             System.out.println("请求预设信息"+HEARTBEATREQUEST );
+             return HEARTBEATREQUEST ;
+           // return null;
         }
 
         public Object getResponse(IoSession arg0, Object arg1) {
             // System.out.println(arg0.toString());
-            System.out.println("响应预设信息" + HEARTBEATRESPONSE);
-            return HEARTBEATRESPONSE;
-            // return null;
+           // System.out.println("响应预设信息" + HEARTBEATRESPONSE);
+           // return HEARTBEATRESPONSE;
+             return null;
         }
 
         public boolean isRequest(IoSession arg0, Object arg1) {
             // System.out.println(arg0.toString());
 
-            if (arg1.toString().equals(String.valueOf(HEARTBEATREQUEST))) {
-
-                System.out.println("是请求包");
-
-                return true;
-            }
+//            if (arg1.toString().equals(String.valueOf(HEARTBEATREQUEST))) {
+//
+//                System.out.println("是请求包");
+//
+//                return true;
+//            }
             // System.out.println("不是请求包");
             return false;
 
@@ -87,11 +87,11 @@ public class MinaService {
 
         public boolean isResponse(IoSession arg0, Object arg1) {
 
-            //
-            // if(arg1.toString().equals(String.valueOf(HEARTBEATRESPONSE))) {
-            //System.out.println("是响应包"); return true; }
 
-            // System.out.println("不是响应包");
+             if(arg1.toString().equals(String.valueOf(HEARTBEATRESPONSE))) {
+            System.out.println("是响应包"); return true; }
+
+             System.out.println("不是响应包");
             return false;
 
         }

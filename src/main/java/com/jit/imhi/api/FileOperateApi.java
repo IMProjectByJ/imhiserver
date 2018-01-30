@@ -48,7 +48,7 @@ public class FileOperateApi {
             @CurrentUser参数可以获得请求用户的个人信息
      */
     public JSONObject upLoadFile(@CurrentUser User user, @RequestParam("file")MultipartFile file,
-                                 @RequestParam("toId") Integer toId, @RequestParam("messageTpye") Integer messageType) {
+                                 @RequestParam("toId") Integer toId, @RequestParam("messageType") Integer messageType) {
 
         JSONObject jsonObject = new JSONObject();// jsonObject中包含信息://文件在数据库中的存储位置 // 上传状态
         // 将数据存放在本地
@@ -83,7 +83,12 @@ public class FileOperateApi {
     public ResponseEntity<FileSystemResource> downLoadFile(@CurrentUser User user,
                                                            @RequestBody Integer messagId){
 
+        System.out.println("进入下载界面");
+        System.out.println("进入下载界面"+" "+user.getUserId()+" "+messagId);
         HistoryMessage historyMessage = fileOperateService.authenicationFileOwner( messagId,user.getUserId());
+        System.out.println(historyMessage.getMessageType());
+        System.out.println(historyMessage.getMessageId());
+        System.out.println(historyMessage.getDate());
         if (historyMessage != null) {
 
             JSONObject jsonObject = JSONObject.parseObject(historyMessage.getTextContent());// 转化为json字符串
@@ -112,6 +117,9 @@ public class FileOperateApi {
 
             }
 
+        } else
+        {
+            System.out.println("TM是空的");
         }
         return  null;
 

@@ -102,4 +102,6 @@
     from user, GroupUser where user.user_id =  GroupUser.member_id  and GroupUser.group_id=#{groupId,jdbcType=INTEGER}
 
   </select>
+
+
 </mapper>

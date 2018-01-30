@@ -88,7 +88,7 @@ public class GroupChatApi {
     public JSONObject handleUpdate(@CurrentUser User user,
                                    @PathVariable String groupName,
                                    @PathVariable Integer groupId,
-                                   @RequestParam("file") MultipartFile file) {
+                                       @RequestParam("file") MultipartFile file) {
         JSONObject jsonObject = new JSONObject();
         if (groupOperateService.authenUser(user.getUserId(),groupId)) {
             // 验证成功
